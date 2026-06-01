@@ -175,58 +175,49 @@ function Page() {
         </div>
       </Section>
 
-      {/* RESULTS */}
+      {/* SPEED MATTERS */}
       <Section id="resultats">
         <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow>Résultats</Eyebrow>
-          <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Ce que Converto apporte concrètement</h2>
+          <Eyebrow>Les chiffres parlent</Eyebrow>
+          <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Pourquoi la rapidité fait la différence</h2>
         </div>
 
         <div className="mt-14 grid md:grid-cols-3 gap-5">
           {[
-            { v: "< 3 min", l: "Temps de réponse", d: "Vos prospects sont contactés immédiatement." },
-            { v: "24/7", l: "Disponibilité", d: "Soir, week-end, jours fériés — sans interruption." },
-            { v: "100%", l: "Temps gagné", d: "Qualification et relances entièrement automatisées." },
-          ].map((s, i) => (
-            <div key={i} className="rounded-2xl p-7 bg-white border border-border shadow-soft">
-              <div className="text-4xl sm:text-5xl font-bold text-gradient" style={{ fontFamily: "var(--font-display)" }}>
-                {s.v}
+            {
+              icon: "⚡",
+              title: "Réponse en moins de 5 minutes",
+              stat: "×21",
+              desc: "Les entreprises qui répondent dans les 5 minutes ont jusqu’à 21 fois plus de chances de qualifier un prospect que celles qui attendent 30 minutes ou plus.",
+            },
+            {
+              icon: "🏆",
+              title: "Le premier qui répond gagne souvent",
+              stat: "78%",
+              desc: "Jusqu’à 78 % des clients choisissent la première entreprise qui leur répond.",
+            },
+            {
+              icon: "📱",
+              title: "WhatsApp est lu immédiatement",
+              stat: "98%",
+              desc: "Les messages WhatsApp affichent généralement 95 à 98 % d’ouverture, contre environ 20 à 35 % pour les emails.",
+            },
+          ].map((c, i) => (
+            <div key={i} className="rounded-2xl p-7 bg-white border border-border shadow-soft flex flex-col">
+              <div className="text-3xl">{c.icon}</div>
+              <div className="mt-4 text-5xl font-bold text-gradient" style={{ fontFamily: "var(--font-display)" }}>
+                {c.stat}
               </div>
-              <div className="mt-3 font-semibold text-[#161b25]">{s.l}</div>
-              <p className="mt-1 text-sm text-[#5f6673]">{s.d}</p>
+              <h3 className="mt-4 font-semibold text-[#161b25]">{c.title}</h3>
+              <p className="mt-2 text-sm text-[#5f6673] leading-relaxed flex-1">{c.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Dashboard mockup */}
-        <div className="mt-12 rounded-3xl p-2 bg-gradient-primary shadow-card">
-          <div className="rounded-[1.4rem] bg-white p-6 sm:p-8">
-            <div className="flex items-center justify-between mb-6">
-              <div>
-                <div className="text-xs text-[#5f6673]">Tableau de bord</div>
-                <h3 className="font-bold text-lg">Aperçu des 30 derniers jours</h3>
-              </div>
-              <div className="hidden sm:flex items-center gap-2 text-xs text-[#5f6673]">
-                <span className="h-2 w-2 rounded-full bg-green-500" /> Mis à jour en temps réel
-              </div>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { k: "Demandes reçues", v: "147" },
-                { k: "Rendez-vous confirmés", v: "89" },
-                { k: "Taux de conversion", v: "60%" },
-                { k: "Temps économisé", v: "42 h" },
-              ].map((m, i) => (
-                <div key={i} className="rounded-xl bg-surface p-4">
-                  <div className="text-xs text-[#5f6673]">{m.k}</div>
-                  <div className="mt-1 text-2xl font-bold text-[#161b25]">{m.v}</div>
-                  <div className="mt-3 h-1.5 rounded-full bg-white overflow-hidden">
-                    <div className="h-full bg-gradient-primary" style={{ width: `${60 + i * 8}%` }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mt-12 max-w-3xl mx-auto text-center">
+          <p className="text-[#5f6673] text-lg leading-relaxed">
+            Aujourd’hui, la plupart des entreprises répondent plusieurs heures après une demande de devis. Converto permet à votre entreprise d’être réactive en quelques secondes, même lorsque vous êtes sur un chantier ou en dehors des horaires d’ouverture.
+          </p>
         </div>
       </Section>
 

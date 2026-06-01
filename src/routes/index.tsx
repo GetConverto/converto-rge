@@ -258,6 +258,56 @@ function Page() {
         </div>
       </Section>
 
+      {/* BEFORE / AFTER */}
+      <Section className="bg-surface">
+        <div className="max-w-3xl mx-auto text-center">
+          <Eyebrow>La différence</Eyebrow>
+          <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Ce qui change avec Converto</h2>
+        </div>
+        <div className="mt-14 grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+          <div className="rounded-2xl p-6 sm:p-8 bg-white border border-red-100 shadow-soft">
+            <div className="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 mb-6">
+              <span className="h-2 w-2 rounded-full bg-red-500" />
+              Sans Converto
+            </div>
+            <ol className="space-y-4">
+              {[
+                "Un particulier demande un devis",
+                "Il contacte 3 ou 4 entreprises",
+                "Vous êtes sur un chantier",
+                "Vous le rappelez quelques heures plus tard",
+                "Il a déjà pris rendez-vous avec quelqu’un d’autre",
+              ].map((t, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#161b25]">
+                  <span className="shrink-0 h-6 w-6 rounded-full bg-red-50 text-red-500 text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                  <span className="text-[15px] leading-snug">{t}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="rounded-2xl p-6 sm:p-8 bg-white border border-[#1948ff]/10 shadow-soft">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#1948ff]/5 px-3 py-1 text-xs font-semibold text-[#1948ff] mb-6">
+              <span className="h-2 w-2 rounded-full bg-[#1948ff]" />
+              Avec Converto
+            </div>
+            <ol className="space-y-4">
+              {[
+                "Le prospect reçoit une réponse immédiatement",
+                "Son projet est qualifié automatiquement",
+                "Il reçoit des relances si nécessaire",
+                "Un rendez-vous est proposé",
+                "Votre équipe intervient uniquement quand le prospect est prêt à avancer",
+              ].map((t, i) => (
+                <li key={i} className="flex items-start gap-3 text-[#161b25]">
+                  <span className="shrink-0 h-6 w-6 rounded-full bg-gradient-primary text-white text-xs font-bold flex items-center justify-center mt-0.5">{i + 1}</span>
+                  <span className="text-[15px] leading-snug">{t}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </Section>
+
       {/* FINAL CTA */}
       <section className="px-5 sm:px-8 pb-20 sm:pb-28">
         <div className="max-w-5xl mx-auto rounded-3xl p-10 sm:p-16 text-center bg-gradient-primary shadow-glow relative overflow-hidden">

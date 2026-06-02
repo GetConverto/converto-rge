@@ -74,7 +74,10 @@ function Page() {
                 Voir comment ça fonctionne
               </a>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#5f6673]">
+            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-surface border border-border px-4 py-2 text-sm text-[#5f6673]">
+              À partir de <span className="font-bold text-[#161b25]">390 € HT / mois</span>
+            </div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-[#5f6673]">
               <span className="flex items-center gap-2"><Check /> Sans changer d'outil</span>
               <span className="flex items-center gap-2"><Check /> Opérationnel en quelques jours</span>
               <span className="flex items-center gap-2"><Check /> 24h/24 · 7j/7</span>

@@ -176,7 +176,7 @@ function Page() {
       </Section>
 
       {/* SPEED MATTERS */}
-      <Section id="resultats">
+      <Section id="chiffres">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Les chiffres parlent</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Pourquoi la rapidité fait la différence</h2>

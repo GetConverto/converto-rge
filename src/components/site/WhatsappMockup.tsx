@@ -4,7 +4,7 @@ export function WhatsappMockup() {
       {/* Floating badges */}
       <div className="absolute -left-6 top-10 z-10 hidden sm:flex items-center gap-2 bg-white rounded-full pl-2 pr-4 py-2 shadow-card animate-float">
         <span className="h-7 w-7 rounded-full bg-gradient-primary flex items-center justify-center text-white text-xs font-bold">✓</span>
-        <span className="text-xs font-semibold text-[#161b25]">Réponse en 47s</span>
+        <span className="text-xs font-semibold text-[#161b25]">Réponse en moins de 3 minutes</span>
       </div>
       <div className="absolute -right-4 bottom-24 z-10 hidden sm:flex items-center gap-2 bg-white rounded-full pl-2 pr-4 py-2 shadow-card animate-float" style={{ animationDelay: "1.5s" }}>
         <span className="h-7 w-7 rounded-full bg-[#25D366] flex items-center justify-center text-white text-xs">📅</span>

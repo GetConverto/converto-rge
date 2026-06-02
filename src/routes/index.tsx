@@ -260,6 +260,43 @@ function Page() {
         </div>
       </Section>
 
+      {/* RESULTATS */}
+      <Section id="resultats" className="bg-surface">
+        <div className="max-w-3xl mx-auto text-center">
+          <Eyebrow>Résultats</Eyebrow>
+          <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Exemple concret</h2>
+        </div>
+        <div className="mt-14 max-w-4xl mx-auto bg-white rounded-2xl border border-border shadow-soft overflow-hidden">
+          <div className="p-6 sm:p-8">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="h-10 w-10 rounded-full bg-gradient-primary text-white flex items-center justify-center text-lg">🏢</span>
+              <div>
+                <h3 className="font-bold text-lg">Entreprise de climatisation</h3>
+                <p className="text-sm text-[#5f6673]">40 demandes de devis / mois</p>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-xl p-5 bg-red-50/50 border border-red-100">
+                <div className="text-xs font-bold text-red-600 uppercase tracking-wider mb-4">Avant</div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-[#161b25]"><span className="text-red-400 mt-0.5">✕</span><span className="text-[15px]">Réponses irrégulières</span></li>
+                  <li className="flex items-start gap-2 text-[#161b25]"><span className="text-red-400 mt-0.5">✕</span><span className="text-[15px]">Prospects difficiles à recontacter</span></li>
+                  <li className="flex items-start gap-2 text-[#161b25]"><span className="text-red-400 mt-0.5">✕</span><span className="text-[15px]">RDV oubliés</span></li>
+                </ul>
+              </div>
+              <div className="rounded-xl p-5 bg-[#1948ff]/5 border border-[#1948ff]/10">
+                <div className="text-xs font-bold text-[#1948ff] uppercase tracking-wider mb-4">Après</div>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-2 text-[#161b25]"><Check /><span className="text-[15px]">Réponse immédiate à chaque demande</span></li>
+                  <li className="flex items-start gap-2 text-[#161b25]"><Check /><span className="text-[15px]">Relances automatiques</span></li>
+                  <li className="flex items-start gap-2 text-[#161b25]"><Check /><span className="text-[15px]">Plus de rendez-vous qualifiés</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
       {/* FAQ */}
       <Section id="faq">
         <div className="max-w-3xl mx-auto text-center">

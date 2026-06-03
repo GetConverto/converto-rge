@@ -11,7 +11,7 @@ const items = [
   },
   {
     q: "Comment les rendez-vous sont-ils planifiés ?",
-    a: "Une fois le prospect qualifié, Converto propose des créneaux disponibles sur l'agenda de votre équipe et confirme automatiquement le rendez-vous.",
+    a: "Converto trouve un créneau en fonction de vos disponibilités et celles de votre prospect, puis le RDV est confirmé directement dans votre agenda.",
   },
   {
     q: "Est-ce que cela fonctionne le soir et le week-end ?",
@@ -19,7 +19,7 @@ const items = [
   },
   {
     q: "Combien de temps faut-il pour être opérationnel ?",
-    a: "Quelques jours. Nous paramétrons votre scénario de qualification, branchons votre agenda et activons votre numéro WhatsApp.",
+    a: "En général, quelques jours suffisent après la récupération des accès nécessaires.",
   },
 ];
 
@@ -30,7 +30,10 @@ export function Faq() {
       {items.map((it, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className="bg-white rounded-2xl border border-border overflow-hidden shadow-soft">
+          <div
+            key={i}
+            className="bg-white rounded-2xl border border-border overflow-hidden shadow-soft"
+          >
             <button
               onClick={() => setOpen(isOpen ? null : i)}
               className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"

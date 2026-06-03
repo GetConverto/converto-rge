@@ -7,7 +7,7 @@ const items = [
   },
   {
     q: "Faut-il changer d'outil ?",
-    a: "Non. Converto se branche sur votre formulaire actuel, votre CRM ou votre plateforme de leads. Vous gardez votre processus commercial habituel.",
+    a: "Non. Converto se branche sur votre formulaire actuel, votre CRM ou votre plateforme de prospects. Vous gardez votre processus commercial habituel.",
   },
   {
     q: "Comment les rendez-vous sont-ils planifiés ?",

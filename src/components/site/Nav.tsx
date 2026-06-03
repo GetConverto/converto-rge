@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/converto-logo.png.asset.json";
 
 const CAL_URL = "https://calendly.com/gdmf-ai/20mn";
+const LOGO_URL = "/converto-logo.svg";
 
 const links = [
   { href: "#fonctionnement", label: "Comment ça fonctionne" },
   { href: "#resultats", label: "Résultats" },
+  { href: "#offres", label: "Offres" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -28,7 +29,7 @@ export function Nav() {
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <a href="#top" className="flex items-center gap-2">
-          <img src={logo.url} alt="Converto" className="h-7 w-auto" />
+          <img src={LOGO_URL} alt="Converto" className="h-8 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -45,7 +46,7 @@ export function Nav() {
           rel="noopener noreferrer"
           className="hidden md:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary shadow-soft hover:shadow-glow transition-all"
         >
-          Réserver une démo
+          Réserver une démo de 20 min
         </a>
 
         <button
@@ -70,7 +71,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="inline-flex w-full justify-center items-center h-11 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary"
           >
-            Réserver une démo
+            Réserver une démo de 20 min
           </a>
         </div>
       )}

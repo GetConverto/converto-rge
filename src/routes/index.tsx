@@ -125,7 +125,7 @@ function PriceDisplay({ price, billingCycle }: { price: string; billingCycle: Bi
   }
 
   if (billingCycle === "annual") {
-    const discountedMonthlyPrice = Math.round(monthlyPrice * 0.8);
+    const discountedMonthlyPrice = Math.round((monthlyPrice * 10) / 12);
 
     return (
       <div>
@@ -573,7 +573,7 @@ function Page() {
           <div className="mt-8 inline-flex rounded-full border border-border bg-white p-1 shadow-soft">
             {[
               { value: "monthly", label: "Mensuel" },
-              { value: "annual", label: "Annuel -20%" },
+              { value: "annual", label: "Annuel - 2 mois offerts" },
             ].map((option) => (
               <button
                 key={option.value}

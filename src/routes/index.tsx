@@ -20,6 +20,12 @@ const STARTER_PRICING = [
   { value: "101-200", label: "101 à 200 prospects / mois", price: "790" },
 ] as const;
 
+const NIGHT_WEEKEND_PRICING = [
+  { value: "0-50", label: "0 à 50 prospects / mois", price: "249" },
+  { value: "51-100", label: "51 à 100 prospects / mois", price: "449" },
+  { value: "101-200", label: "101 à 200 prospects / mois", price: "649" },
+] as const;
+
 const SCALE_PRICING = [
   { value: "0-200", label: "0 à 200 prospects / mois", price: "990" },
   { value: "200-plus", label: "Plus de 200 prospects / mois", price: "Sur Devis" },
@@ -43,6 +49,8 @@ const SCALE_FEATURES = [
   "Optimisation mensuelle des performances",
   "Support prioritaire",
 ];
+
+type BillingCycle = "monthly" | "annual";
 
 export const Route = createFileRoute("/")({
   component: Page,
@@ -100,12 +108,59 @@ function Eyebrow({ children }: { children: React.ReactNode }) {
   );
 }
 
+function formatEuro(value: number) {
+  return new Intl.NumberFormat("fr-FR").format(value);
+}
+
+function PriceDisplay({ price, billingCycle }: { price: string; billingCycle: BillingCycle }) {
+  const monthlyPrice = Number(price);
+
+  if (!Number.isFinite(monthlyPrice)) {
+    return (
+      <div>
+        <div className="whitespace-nowrap text-2xl font-bold text-gradient">{price}</div>
+        <p className="mt-1 min-h-5 text-xs font-semibold text-[#5f6673]">Tarif adapté au volume</p>
+      </div>
+    );
+  }
+
+  if (billingCycle === "annual") {
+    const discountedMonthlyPrice = Math.round(monthlyPrice * 0.8);
+
+    return (
+      <div>
+        <div className="whitespace-nowrap text-2xl font-bold text-gradient">
+          {formatEuro(discountedMonthlyPrice)} € HT{" "}
+          <span className="text-sm font-semibold text-[#5f6673]">/ mois</span>
+        </div>
+        <p className="mt-1 min-h-5 text-xs font-semibold text-[#15803d]">Facturation annuelle</p>
+      </div>
+    );
+  }
+
+  return (
+    <div>
+      <div className="whitespace-nowrap text-2xl font-bold text-gradient">
+        {formatEuro(monthlyPrice)} € HT{" "}
+        <span className="text-sm font-semibold text-[#5f6673]">/ mois</span>
+      </div>
+      <p className="mt-1 min-h-5 text-xs font-semibold text-[#5f6673]">Facturation mensuelle</p>
+    </div>
+  );
+}
+
 function Page() {
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>("annual");
   const [starterVolume, setStarterVolume] =
     useState<(typeof STARTER_PRICING)[number]["value"]>("0-50");
+  const [nightWeekendVolume, setNightWeekendVolume] =
+    useState<(typeof NIGHT_WEEKEND_PRICING)[number]["value"]>("0-50");
   const [scaleVolume, setScaleVolume] = useState<(typeof SCALE_PRICING)[number]["value"]>("0-200");
   const starterOffer =
     STARTER_PRICING.find((option) => option.value === starterVolume) ?? STARTER_PRICING[0];
+  const nightWeekendOffer =
+    NIGHT_WEEKEND_PRICING.find((option) => option.value === nightWeekendVolume) ??
+    NIGHT_WEEKEND_PRICING[0];
   const scaleOffer =
     SCALE_PRICING.find((option) => option.value === scaleVolume) ?? SCALE_PRICING[0];
 
@@ -507,32 +562,97 @@ function Page() {
       {/* OFFERS */}
       <Section id="offres">
         <div className="max-w-3xl mx-auto text-center">
-          <Eyebrow>Offres</Eyebrow>
+          <Eyebrow>Tarifs</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
-            Deux plans selon votre volume de prospects
+            Trois plans selon votre volume de prospects
           </h2>
           <p className="mt-5 text-[#5f6673] text-lg">
             On commence simple, puis on adapte les scénarios et intégrations à votre fonctionnement
             commercial.
           </p>
+          <div className="mt-8 inline-flex rounded-full border border-border bg-white p-1 shadow-soft">
+            {[
+              { value: "monthly", label: "Mensuel" },
+              { value: "annual", label: "Annuel -20%" },
+            ].map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                aria-pressed={billingCycle === option.value}
+                onClick={() => setBillingCycle(option.value as BillingCycle)}
+                className={`h-10 rounded-full px-5 text-sm font-semibold transition-all ${
+                  billingCycle === option.value
+                    ? "bg-gradient-primary text-white shadow-soft"
+                    : "text-[#5f6673] hover:text-[#161b25]"
+                }`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
-        <div className="mt-14 grid lg:grid-cols-2 gap-5">
+        <div className="mt-14 grid lg:grid-cols-3 gap-5">
+          <div className="rounded-2xl p-7 bg-white border border-border shadow-soft flex flex-col">
+            <div className="mb-4 inline-flex w-fit rounded-full bg-[#16a34a]/10 px-3 py-1 text-xs font-bold text-[#15803d]">
+              Soirs et week-ends uniquement
+            </div>
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
+              <div>
+                <h3 className="text-xl font-bold text-[#161b25]">Soir & Week-end</h3>
+                <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
+                  Comme Starter, activé de 18h à 8h le matin et tout le week-end.
+                </p>
+              </div>
+              <div className="sm:text-right lg:text-left">
+                <PriceDisplay price={nightWeekendOffer.price} billingCycle={billingCycle} />
+              </div>
+            </div>
+            <div className="mt-6">
+              <label className="mb-2 block text-sm font-semibold text-[#161b25]">
+                Volume de prospects
+              </label>
+              <Select
+                value={nightWeekendVolume}
+                onValueChange={(value) => setNightWeekendVolume(value as typeof nightWeekendVolume)}
+              >
+                <SelectTrigger className="h-12 rounded-xl border-border bg-surface px-4 text-[#161b25] shadow-none">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {NIGHT_WEEKEND_PRICING.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="mt-6 text-sm font-bold text-[#161b25]">
+              Inclus Starter, limité aux horaires indiqués :
+            </div>
+            <ul className="mt-4 space-y-3 flex-1">
+              {STARTER_FEATURES.map((point) => (
+                <li key={point} className="flex items-start gap-3 text-sm text-[#161b25]">
+                  <Check />
+                  <span>{point}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <div className="rounded-2xl p-7 bg-white border border-[#1948ff]/30 shadow-soft flex flex-col">
             <div className="mb-4 inline-flex w-fit rounded-full bg-[#1948ff]/5 px-3 py-1 text-xs font-bold text-[#1948ff]">
               Le plus simple pour démarrer
             </div>
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
               <div>
                 <h3 className="text-xl font-bold text-[#161b25]">Starter</h3>
                 <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
                   Pour automatiser la réponse, la qualification et la prise de rendez-vous.
                 </p>
               </div>
-              <div className="sm:text-right">
-                <div className="whitespace-nowrap text-2xl font-bold text-gradient">
-                  {starterOffer.price} € HT{" "}
-                  <span className="text-sm font-semibold text-[#5f6673]">/ mois</span>
-                </div>
+              <div className="sm:text-right lg:text-left">
+                <PriceDisplay price={starterOffer.price} billingCycle={billingCycle} />
               </div>
             </div>
             <div className="mt-6">
@@ -566,24 +686,18 @@ function Page() {
           </div>
 
           <div className="rounded-2xl p-7 bg-white border border-border shadow-soft flex flex-col">
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+            <div className="mb-4 inline-flex w-fit rounded-full bg-surface px-3 py-1 text-xs font-bold text-[#5f6673]">
+              Pour aller plus loin
+            </div>
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
               <div>
                 <h3 className="text-xl font-bold text-[#161b25]">Scale</h3>
                 <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
                   Pour récupérer plus de chiffre d’affaires après le premier contact.
                 </p>
               </div>
-              <div className="sm:text-right">
-                <div className="whitespace-nowrap text-2xl font-bold text-gradient">
-                  {scaleOffer.price === "Sur Devis" ? (
-                    scaleOffer.price
-                  ) : (
-                    <>
-                      {scaleOffer.price} € HT{" "}
-                      <span className="text-sm font-semibold text-[#5f6673]">/ mois</span>
-                    </>
-                  )}
-                </div>
+              <div className="sm:text-right lg:text-left">
+                <PriceDisplay price={scaleOffer.price} billingCycle={billingCycle} />
               </div>
             </div>
             <div className="mt-6">

@@ -12,7 +12,7 @@ import {
 import { useState } from "react";
 
 const CAL_URL = "https://calendly.com/gdmf-ai/20mn";
-const LOGO_URL = "/converto-logo.svg";
+const LOGO_URL = "/converto-logo.svg?v=2";
 
 const STARTER_PRICING = [
   { value: "0-50", label: "0 à 50 prospects / mois", price: "390" },
@@ -36,12 +36,11 @@ const STARTER_FEATURES = [
 ];
 
 const SCALE_FEATURES = [
-  "Relance automatique des devis non signés",
+  "Récupération automatique des devis non signés",
   "Réactivation des anciens prospects",
-  "Relance des clients existants",
-  "Demande d'avis Google automatisée",
-  "Campagnes WhatsApp ciblées",
-  "Accompagnement stratégique mensuel",
+  "Fidélisation et développement des clients existants",
+  "Demandes d'avis Google automatisées",
+  "Optimisation mensuelle des performances",
   "Support prioritaire",
 ];
 
@@ -86,7 +85,7 @@ function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`py-20 sm:py-28 px-5 sm:px-8 ${className}`}>
+    <section id={id} className={`scroll-mt-20 py-20 sm:py-28 px-5 sm:px-8 ${className}`}>
       <div className="max-w-7xl mx-auto">{children}</div>
     </section>
   );
@@ -146,9 +145,6 @@ function Page() {
                 Voir comment ça fonctionne
               </a>
             </div>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-surface border border-border px-4 py-2 text-sm text-[#5f6673]">
-              À partir de <span className="font-bold text-[#161b25]">390 € HT / mois</span>
-            </div>
             <div className="mt-4 inline-flex items-center gap-2 text-sm text-[#5f6673]">
               <span className="font-medium">Demande de devis</span>
               <span className="text-[#25D366]">→</span>
@@ -181,17 +177,15 @@ function Page() {
       </section>
 
       {/* PROBLEM */}
-      <Section className="bg-surface">
+      <Section id="constat" className="bg-surface">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Le constat</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
-            Vous payez peut-être déjà des prospects que vous perdez simplement parce que vous
-            répondez trop tard.
+            Vous perdez déjà des prospects simplement parce que vous répondez trop tard.
           </h2>
           <p className="mt-5 text-[#5f6673] text-lg">
-            Aujourd'hui, un particulier contacte souvent plusieurs entreprises avant de choisir. Si
-            vous faites de la pub ou achetez des prospects, chaque demande non rappelée assez vite
-            peut devenir de l'argent laissé à un concurrent.
+            Aujourd'hui, un particulier contacte souvent plusieurs entreprises avant de choisir. 8
+            fois sur 10 c'est l'entreprise qui répond en premier qui décroche le chantier.
           </p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -327,7 +321,7 @@ function Page() {
               {[
                 { value: "40", label: "demandes par mois" },
                 { value: "10", label: "prospects non recontactés ou perdus", pain: true },
-                { value: "+2", label: "RDV supplémentaires générés", highlight: true },
+                { value: "+3", label: "RDV supplémentaires récupérés", highlight: true },
                 {
                   value: "1",
                   label: "chantier récupéré peut rentabiliser plusieurs mois",
@@ -374,7 +368,7 @@ function Page() {
       </Section>
 
       {/* FOR WHO */}
-      <Section>
+      <Section id="pour-qui">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="max-w-3xl">
             <Eyebrow>Pour qui</Eyebrow>
@@ -631,9 +625,6 @@ function Page() {
           <div className="mt-6">
             <CTA>Réserver une démo de 20 min →</CTA>
           </div>
-          <p className="mt-4 text-sm font-medium text-[#5f6673]">
-            Frais de mise en place à partir de 390€ HT selon intégrations.
-          </p>
         </div>
       </Section>
 
@@ -680,13 +671,13 @@ function Page() {
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
           <img src={LOGO_URL} alt="Converto" className="h-7 w-auto" />
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-[#5f6673]">
-            <a href="#" className="hover:text-[#161b25]">
+            <a href="/mentions-legales" className="hover:text-[#161b25]">
               Mentions légales
             </a>
-            <a href="#" className="hover:text-[#161b25]">
+            <a href="/politique-confidentialite" className="hover:text-[#161b25]">
               Politique de confidentialité
             </a>
-            <a href="#" className="hover:text-[#161b25]">
+            <a href="/contact" className="hover:text-[#161b25]">
               Contact
             </a>
           </nav>

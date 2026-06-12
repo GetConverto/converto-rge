@@ -78,22 +78,51 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés" },
-      { name: "description", content: "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment." },
-      { property: "og:title", content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés" },
-      { property: "og:description", content: "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment." },
+      {
+        name: "description",
+        content:
+          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+      },
+      {
+        property: "og:title",
+        content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés",
+      },
+      {
+        property: "og:description",
+        content:
+          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés" },
-      { name: "twitter:description", content: "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0557940c-58bc-4e3e-9878-ba96719c9aa4" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0557940c-58bc-4e3e-9878-ba96719c9aa4" },
+      {
+        name: "twitter:title",
+        content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0557940c-58bc-4e3e-9878-ba96719c9aa4",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/0557940c-58bc-4e3e-9878-ba96719c9aa4",
+      },
     ],
     links: [
-      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg?v=2" },
+      { rel: "icon", type: "image/svg+xml", href: "/favicon.svg?v=3" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap",
+      },
     ],
   }),
   shellComponent: RootShell,

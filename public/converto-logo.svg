@@ -1,36 +1,34 @@
-<svg width="906" height="174" viewBox="0 0 906 174" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+<svg width="600" height="112" viewBox="0 0 600 112" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMid meet" role="img" aria-labelledby="title">
   <title id="title">Converto</title>
-  <path
-    d="M92 11H184C192 11 199 13.5 205 18.5L235 43.5C238 46 238 50.5 235 53L204 78.5C199 82.5 192 79 192 72.5V52H101C87 52 75 63.5 75 77.5V89H34V77.5C34 40.8 55.3 11 92 11Z"
-    fill="url(#blueGradient)"
-  />
-  <path
-    d="M35 106L3 132C-1 135.3 -1 141.2 3 144.5L36.5 170C42.2 174.3 49.2 176.6 56.3 176.6H174.5C211.3 176.6 241.1 146.8 241.1 110C241.1 73.2 211.3 43.4 174.5 43.4H114.3V84.4H174.5C188.6 84.4 200.1 95.9 200.1 110C200.1 124.1 188.6 135.6 174.5 135.6H68V114C68 107.5 40 101.9 35 106Z"
-    fill="url(#darkGradient)"
-  />
-  <path
-    d="M70 99H179C185.1 99 190 103.9 190 110C190 116.1 185.1 121 179 121H53C45 121 40 112.3 44.1 105.4L50.5 94.6C54.1 88.5 63.4 91.9 63.4 99H70Z"
-    fill="white"
-  />
+  <g transform="translate(0 2) scale(0.21)">
+    <path
+      d="M248 98H417C444 98 467 107 488 124L548 174C560 184 560 199 548 208L471 254C454 264 433 252 433 233V175H247C202 175 167 211 167 256C167 282 181 307 209 326H91V256C91 168 160 98 248 98Z"
+      fill="url(#blueGradient)"
+    />
+    <path
+      d="M137 352V420H421C445 420 463 402 463 380C463 357 445 334 421 334H326L356 278H421C505 278 562 324 562 393C562 468 502 503 419 503H171C143 503 118 494 96 477L41 433C29 423 29 408 41 399L120 354C128 349 137 355 137 365V352Z"
+      fill="url(#darkGradient)"
+    />
+  </g>
   <text
-    x="282"
-    y="129"
+    x="164"
+    y="80"
     fill="#121821"
     font-family="Inter, Arial, Helvetica, sans-serif"
-    font-size="118"
+    font-size="72"
     font-weight="800"
-    letter-spacing="-4"
+    letter-spacing="-2"
   >
     Converto
   </text>
   <defs>
-    <linearGradient id="blueGradient" x1="29" y1="48" x2="237" y2="48" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#2F7BFF"/>
-      <stop offset="1" stop-color="#1948FF"/>
+    <linearGradient id="blueGradient" x1="91" y1="212" x2="557" y2="212" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3C8BFF" />
+      <stop offset="1" stop-color="#1948FF" />
     </linearGradient>
-    <linearGradient id="darkGradient" x1="0" y1="110" x2="241" y2="110" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#0D1520"/>
-      <stop offset="1" stop-color="#111820"/>
+    <linearGradient id="darkGradient" x1="32" y1="390" x2="562" y2="390" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0D1520" />
+      <stop offset="1" stop-color="#111820" />
     </linearGradient>
   </defs>
 </svg>

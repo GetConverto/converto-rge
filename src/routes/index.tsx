@@ -343,6 +343,12 @@ function Page() {
             </div>
           ))}
         </div>
+        <div className="mt-10 max-w-3xl mx-auto rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 px-6 py-5 text-center">
+          <p className="text-[15px] font-semibold leading-relaxed text-[#161b25]">
+            Sans engagement, 100% autonome, et sans changer votre façon de travailler : Converto
+            s'adapte aux outils que vous utilisez déjà.
+          </p>
+        </div>
       </Section>
 
       {/* RESULTATS */}

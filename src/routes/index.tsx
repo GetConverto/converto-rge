@@ -239,8 +239,11 @@ function Page() {
             Vous perdez déjà des prospects simplement parce que vous répondez trop tard.
           </h2>
           <p className="mt-5 text-[#5f6673] text-lg">
-            Aujourd'hui, un particulier contacte souvent plusieurs entreprises avant de choisir. 8
-            fois sur 10 c'est l'entreprise qui répond en premier qui décroche le chantier.
+            Aujourd'hui, un particulier contacte souvent plusieurs entreprises avant de choisir.
+            <br />
+            <span className="font-bold text-[#1948ff]">
+              8 fois sur 10 c'est l'entreprise qui répond en premier qui décroche le chantier.
+            </span>
           </p>
         </div>
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -347,7 +350,7 @@ function Page() {
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Simulation de valeur</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
-            Pourquoi 390 € / mois peuvent vite se justifier
+            Ce que Converto vous rapporte concrêtement
           </h2>
           <p className="mt-5 text-[#5f6673] text-lg">
             Sans promettre de miracle, la valeur devient concrète dès qu'un seul chantier
@@ -372,16 +375,11 @@ function Page() {
                 40 demandes / mois
               </div>
             </div>
-            <div className="grid md:grid-cols-4 gap-4">
+            <div className="grid max-w-3xl mx-auto md:grid-cols-3 gap-4">
               {[
                 { value: "40", label: "demandes par mois" },
                 { value: "10", label: "prospects non recontactés ou perdus", pain: true },
                 { value: "+3", label: "RDV supplémentaires récupérés", highlight: true },
-                {
-                  value: "1",
-                  label: "chantier récupéré peut rentabiliser plusieurs mois",
-                  highlight: true,
-                },
               ].map((item) => (
                 <div
                   key={item.label}
@@ -408,6 +406,11 @@ function Page() {
                   <p className="mt-3 text-sm text-[#5f6673] leading-relaxed">{item.label}</p>
                 </div>
               ))}
+            </div>
+            <div className="mt-6 max-w-3xl mx-auto rounded-2xl bg-[#16a34a]/10 border border-[#16a34a]/25 px-6 py-5 text-center shadow-[0_18px_40px_rgba(22,163,74,0.12)]">
+              <p className="text-lg font-bold text-[#15803d]">
+                1 chantier de récupéré = Plusieurs mois de rentabilisés
+              </p>
             </div>
             <div className="mt-8 rounded-2xl bg-[#1948ff]/5 border border-[#1948ff]/10 p-6">
               <h4 className="font-bold text-[#161b25]">

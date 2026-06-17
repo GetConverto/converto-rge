@@ -21,6 +21,22 @@ const items = [
     q: "Combien de temps faut-il pour être opérationnel ?",
     a: "En général, quelques jours suffisent après la récupération des accès nécessaires.",
   },
+  {
+    q: "Est-ce que Converto remplace mon commercial ?",
+    a: "Non. Converto ne remplace pas votre équipe. Il engage le prospect immédiatement, récupère les premières informations et fixe le rendez-vous. Votre commercial intervient ensuite avec un prospect déjà qualifié.",
+  },
+  {
+    q: "Et si mes prospects préfèrent être appelés ?",
+    a: "Converto ne vous empêche pas d’appeler. Il permet simplement d’engager le prospect immédiatement par WhatsApp, puis de planifier un appel ou un rendez-vous selon votre processus.",
+  },
+  {
+    q: "Nous avons déjà quelqu’un qui rappelle les prospects.",
+    a: "Très bien. Converto intervient surtout quand cette personne n’est pas disponible : chantier, pause, soir, week-end, surcharge, absence ou délai de rappel trop long.",
+  },
+  {
+    q: "Nos demandes viennent du SEO, pas de publicité.",
+    a: "Justement : votre SEO génère déjà des opportunités. Converto permet de mieux convertir ces demandes en conversations et rendez-vous.",
+  },
 ];
 
 export function Faq() {

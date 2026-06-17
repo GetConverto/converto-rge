@@ -150,7 +150,7 @@ function PriceDisplay({ price, billingCycle }: { price: string; billingCycle: Bi
 }
 
 function Page() {
-  const [billingCycle, setBillingCycle] = useState<BillingCycle>("annual");
+  const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
   const [starterVolume, setStarterVolume] =
     useState<(typeof STARTER_PRICING)[number]["value"]>("0-50");
   const [nightWeekendVolume, setNightWeekendVolume] =
@@ -250,8 +250,8 @@ function Page() {
           {[
             {
               i: "€",
-              t: "Prospects payants perdus",
-              d: "Vous investissez pour générer des demandes, puis certaines partent faute de réponse rapide.",
+              t: "Demandes précieuses perdues",
+              d: "Qu’elles viennent du SEO, de Google, du bouche-à-oreille ou de la publicité, vos demandes de devis ont de la valeur. Si elles ne sont pas traitées rapidement, elles peuvent partir ailleurs.",
             },
             {
               i: "⏱️",
@@ -351,8 +351,40 @@ function Page() {
         </div>
       </Section>
 
+      {/* TEAM HANDOFF */}
+      <Section className="bg-surface">
+        <div className="max-w-3xl mx-auto text-center">
+          <Eyebrow>Transmission à votre équipe</Eyebrow>
+          <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Ce que votre équipe reçoit</h2>
+          <p className="mt-5 text-[#5f6673] text-lg">
+            À chaque rendez-vous, votre équipe reçoit toutes les informations utiles pour reprendre
+            la main sans repartir de zéro.
+          </p>
+        </div>
+
+        <div className="mt-12 max-w-4xl mx-auto rounded-2xl border border-border bg-white p-6 sm:p-8 shadow-soft">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              "Nom du prospect",
+              "Type de projet",
+              "Ville / zone d’intervention",
+              "Surface ou besoin estimé",
+              "Délai souhaité",
+              "Niveau d’urgence",
+              "Créneau confirmé",
+              "Historique de l’échange WhatsApp",
+            ].map((item) => (
+              <div key={item} className="flex items-start gap-3 rounded-xl bg-surface p-4">
+                <Check />
+                <span className="text-sm font-semibold text-[#161b25]">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
       {/* RESULTATS */}
-      <Section id="resultats" className="bg-surface">
+      <Section id="resultats">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Simulation de valeur</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
@@ -420,11 +452,10 @@ function Page() {
             </div>
             <div className="mt-8 rounded-2xl bg-[#1948ff]/5 border border-[#1948ff]/10 p-6">
               <h4 className="font-bold text-[#161b25]">
-                L'enjeu n'est pas seulement de répondre plus vite.
+                Vous avez déjà fait le plus dur : obtenir une demande de devis.
               </h4>
               <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                C'est de transformer des demandes déjà payées ou déjà reçues en rendez-vous
-                qualifiés, avant que le prospect ne choisisse une autre entreprise.
+                Converto s’assure qu’elle ne refroidisse pas avant qu’un rendez-vous soit fixé.
               </p>
             </div>
           </div>
@@ -432,7 +463,7 @@ function Page() {
       </Section>
 
       {/* FOR WHO */}
-      <Section id="pour-qui">
+      <Section id="pour-qui" className="bg-surface">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
           <div className="max-w-3xl">
             <Eyebrow>Pour qui</Eyebrow>
@@ -508,7 +539,7 @@ function Page() {
       </Section>
 
       {/* SPEED MATTERS */}
-      <Section id="chiffres" className="bg-surface">
+      <Section id="chiffres">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Les chiffres parlent</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
@@ -569,7 +600,7 @@ function Page() {
       </Section>
 
       {/* OFFERS */}
-      <Section id="offres">
+      <Section id="offres" className="bg-surface">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>Tarifs</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">
@@ -607,9 +638,9 @@ function Page() {
             </div>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
               <div>
-                <h3 className="text-xl font-bold text-[#161b25]">Soir & Week-end</h3>
+                <h3 className="text-xl font-bold text-[#161b25]">Veille</h3>
                 <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                  Comme Starter, activé de 18h à 8h le matin et tout le week-end.
+                  Pour ne plus perdre les demandes reçues quand votre entreprise est fermée.
                 </p>
               </div>
               <div className="sm:text-right lg:text-left">
@@ -637,7 +668,7 @@ function Page() {
               </Select>
             </div>
             <div className="mt-6 text-sm font-bold text-[#161b25]">
-              Inclus Starter, limité aux horaires indiqués :
+              Inclus Capture, limité aux horaires indiqués :
             </div>
             <ul className="mt-4 space-y-3 flex-1">
               {STARTER_FEATURES.map((point) => (
@@ -655,9 +686,9 @@ function Page() {
             </div>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
               <div>
-                <h3 className="text-xl font-bold text-[#161b25]">Starter</h3>
+                <h3 className="text-xl font-bold text-[#161b25]">Capture</h3>
                 <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                  Pour automatiser la réponse, la qualification et la prise de rendez-vous.
+                  Pour traiter automatiquement toutes vos demandes de devis, 7j/7.
                 </p>
               </div>
               <div className="sm:text-right lg:text-left">
@@ -700,9 +731,9 @@ function Page() {
             </div>
             <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between lg:flex-col">
               <div>
-                <h3 className="text-xl font-bold text-[#161b25]">Scale</h3>
+                <h3 className="text-xl font-bold text-[#161b25]">Relance</h3>
                 <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                  Pour récupérer plus de chiffre d’affaires après le premier contact.
+                  Pour récupérer les devis non signés, anciens prospects et clients existants.
                 </p>
               </div>
               <div className="sm:text-right lg:text-left">
@@ -729,7 +760,7 @@ function Page() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="mt-6 text-sm font-bold text-[#161b25]">Inclus Starter, plus :</div>
+            <div className="mt-6 text-sm font-bold text-[#161b25]">Inclus Capture, plus :</div>
             <ul className="mt-4 space-y-3 flex-1">
               {SCALE_FEATURES.map((point) => (
                 <li key={point} className="flex items-start gap-3 text-sm text-[#161b25]">
@@ -739,6 +770,13 @@ function Page() {
               ))}
             </ul>
           </div>
+        </div>
+        <div className="mt-8 max-w-3xl mx-auto rounded-2xl border border-[#16a34a]/25 bg-[#16a34a]/10 px-6 py-5 text-center shadow-[0_18px_40px_rgba(22,163,74,0.12)]">
+          <h3 className="text-xl font-bold text-[#15803d]">Garantie réponse rapide</h3>
+          <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
+            Chaque demande couverte reçoit une première réponse WhatsApp en moins de 3 minutes,
+            sinon le mois suivant est offert.
+          </p>
         </div>
         <div className="mt-10 max-w-3xl mx-auto text-center">
           <p className="text-[#5f6673] text-lg leading-relaxed">
@@ -752,7 +790,7 @@ function Page() {
       </Section>
 
       {/* FAQ */}
-      <Section id="faq" className="bg-surface">
+      <Section id="faq">
         <div className="max-w-3xl mx-auto text-center">
           <Eyebrow>FAQ</Eyebrow>
           <h2 className="mt-5 text-3xl sm:text-4xl font-bold">Les questions les plus fréquentes</h2>
@@ -763,7 +801,7 @@ function Page() {
       </Section>
 
       {/* FINAL CTA */}
-      <section className="px-5 sm:px-8 pt-12 pb-20 sm:pt-16 sm:pb-28">
+      <section className="bg-surface px-5 sm:px-8 pt-12 pb-20 sm:pt-16 sm:pb-28">
         <div className="max-w-5xl mx-auto rounded-3xl p-10 sm:p-16 text-center bg-gradient-primary shadow-glow relative overflow-hidden">
           <div
             className="absolute inset-0 opacity-20"

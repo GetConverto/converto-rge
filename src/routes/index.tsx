@@ -32,13 +32,12 @@ const SCALE_PRICING = [
 ] as const;
 
 const STARTER_FEATURES = [
-  "Réponse automatique à chaque demande en moins de 3 minutes",
+  "Réponse automatique à chaque demande en quelques secondes",
   "Relances automatiques si pas réponse",
   "Qualification complète des prospects",
   "Prise de rendez-vous automatisée",
   "Rappels automatiques avant rendez-vous",
   "Tableau de bord de suivi",
-  "Ajustements mensuels du scénario",
 ];
 
 const SCALE_FEATURES = [
@@ -46,7 +45,6 @@ const SCALE_FEATURES = [
   "Réactivation des anciens prospects",
   "Fidélisation et développement des clients existants",
   "Demandes d'avis Google automatisées",
-  "Optimisation mensuelle des performances",
   "Support prioritaire",
 ];
 
@@ -184,7 +182,7 @@ function Page() {
             </Eyebrow>
             <h1 className="mt-5 text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.08] font-bold tracking-tight">
               Transformez chaque demande de devis en{" "}
-              <span className="text-gradient">rendez-vous qualifié</span> — en moins de 3 minutes.
+              <span className="text-gradient">rendez-vous qualifié</span> — en quelques secondes.
             </h1>
             <p className="mt-6 text-lg text-[#5f6673] leading-relaxed max-w-xl">
               Converto contacte automatiquement vos prospects par WhatsApp dès qu'ils demandent un
@@ -192,7 +190,7 @@ function Page() {
               soir, le week-end ou quand vous êtes sur chantier.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <CTA>Réserver une démo de 20 min →</CTA>
+              <CTA>Réserver une démo de 30 min →</CTA>
               <a
                 href="#fonctionnement"
                 className="inline-flex items-center justify-center h-12 px-7 rounded-full text-[15px] font-semibold text-[#161b25] bg-white border border-border hover:border-[#1948ff]/30 transition-all"
@@ -306,7 +304,7 @@ function Page() {
             },
             {
               t: "Réponse immédiate WhatsApp",
-              d: "Un message personnalisé est envoyé en moins de 3 minutes.",
+              d: "Un message personnalisé est envoyé en quelques secondes.",
               n: "02",
             },
             {
@@ -476,7 +474,7 @@ function Page() {
               d'avoir été qualifiés.
             </p>
           </div>
-          <CTA>Réserver une démo de 20 min →</CTA>
+          <CTA>Réserver une démo de 30 min →</CTA>
         </div>
 
         <div className="mt-12 grid lg:grid-cols-[1.05fr_1fr_0.9fr] gap-5 items-stretch">
@@ -774,8 +772,8 @@ function Page() {
         <div className="mt-8 max-w-3xl mx-auto rounded-2xl border border-[#16a34a]/25 bg-[#16a34a]/10 px-6 py-5 text-center shadow-[0_18px_40px_rgba(22,163,74,0.12)]">
           <h3 className="text-xl font-bold text-[#15803d]">Garantie réponse rapide</h3>
           <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
-            Chaque demande couverte reçoit une première réponse WhatsApp en moins de 3 minutes,
-            sinon le mois suivant est offert.
+            Chaque demande couverte reçoit une première réponse WhatsApp en quelques secondes, sinon
+            le mois suivant est offert.
           </p>
         </div>
         <div className="mt-10 max-w-3xl mx-auto text-center">
@@ -784,7 +782,7 @@ function Page() {
             votre processus commercial pour vous orienter vers la formule la plus adaptée.
           </p>
           <div className="mt-6">
-            <CTA>Réserver une démo de 20 min →</CTA>
+            <CTA>Réserver une démo de 30 min →</CTA>
           </div>
         </div>
       </Section>
@@ -811,7 +809,7 @@ function Page() {
             Ne laissez plus vos demandes de devis sans réponse.
           </h2>
           <p className="relative mt-5 text-white/90 text-lg max-w-2xl mx-auto">
-            Réservez une démonstration de 20 minutes et découvrez comment automatiser la
+            Réservez une démonstration de 30 minutes et découvrez comment automatiser la
             qualification et la prise de rendez-vous.
           </p>
           <div className="relative mt-8 flex justify-center">
@@ -821,7 +819,7 @@ function Page() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center h-13 px-8 py-3.5 rounded-full text-[15px] font-semibold text-[#1948ff] bg-white shadow-card hover:-translate-y-0.5 transition-all"
             >
-              Réserver une démo de 20 min →
+              Réserver une démo de 30 min →
             </a>
           </div>
         </div>

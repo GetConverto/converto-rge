@@ -55,7 +55,7 @@ export function Nav() {
           rel="noopener noreferrer"
           className="hidden lg:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary shadow-soft hover:shadow-glow transition-all"
         >
-          Réserver une démo de 20 min
+          Réserver une démo de 30 min
         </a>
 
         <button
@@ -85,7 +85,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="inline-flex w-full justify-center items-center h-11 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary"
           >
-            Réserver une démo de 20 min
+            Réserver une démo de 30 min
           </a>
         </div>
       )}

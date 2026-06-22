@@ -27,7 +27,7 @@ function ContactPage() {
           <p className="text-sm font-semibold text-[#1948ff]">Contact</p>
           <h1 className="mt-3 text-4xl font-bold">Parlons de vos demandes de devis</h1>
           <p className="mt-5 text-lg leading-relaxed text-[#5f6673]">
-            Le plus simple est de réserver une démonstration de 20 minutes. Nous regarderons votre
+            Le plus simple est de réserver une démonstration de 30 minutes. Nous regarderons votre
             volume de demandes, votre processus commercial et la manière dont Converto peut
             automatiser vos réponses et relances.
           </p>
@@ -38,7 +38,7 @@ function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-primary px-7 text-[15px] font-semibold text-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-glow"
             >
-              Réserver une démo de 20 min →
+              Réserver une démo de 30 min →
             </a>
             <a
               href="/"

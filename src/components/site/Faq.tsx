@@ -3,7 +3,7 @@ import { useState } from "react";
 const items = [
   {
     q: "Comment les prospects sont-ils contactés ?",
-    a: "Converto envoie un message WhatsApp personnalisé en moins de 3 minutes après la réception de la demande de devis. La conversation est naturelle et reprend les informations laissées par le prospect.",
+    a: "Converto envoie un message WhatsApp personnalisé en quelques secondes après la réception de la demande de devis. La conversation est naturelle et reprend les informations laissées par le prospect.",
   },
   {
     q: "Faut-il changer d'outil ?",

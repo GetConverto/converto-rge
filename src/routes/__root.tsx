@@ -140,6 +140,7 @@ function RootShell({ children }: { children: ReactNode }) {
       <body>
         {children}
         <Scripts />
+        <script src="https://api.dmchamp.com/v1/chat-widget/WdoQFFFX1LYL3wZgleYo"></script>
       </body>
     </html>
   );

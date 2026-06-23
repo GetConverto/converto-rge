@@ -2,40 +2,36 @@ import { useState } from "react";
 
 const items = [
   {
-    q: "Comment les prospects sont-ils contactés ?",
-    a: "Converto envoie un message WhatsApp personnalisé en quelques secondes après la réception de la demande de devis. La conversation est naturelle et reprend les informations laissées par le prospect.",
+    q: "En quoi c'est différent d'un chatbot ?",
+    a: "Un chatbot répond à des questions selon des règles prédéfinies. Votre commercial IA Converto comprend le contexte de la conversation, gère les objections commerciales en temps réel, s'adapte à chaque prospect et oriente activement vers un achat ou un appel. L'objectif n'est pas de répondre — c'est de vendre.",
   },
   {
-    q: "Faut-il changer d'outil ?",
-    a: "Non. Converto se branche sur votre formulaire actuel, votre CRM ou votre plateforme de prospects. Vous gardez votre processus commercial habituel.",
+    q: "Comment votre commercial IA connaît-il mon offre ?",
+    a: "Lors du setup, on analyse ensemble votre page de vente, vos emails, vos arguments commerciaux et les objections fréquentes de vos clients. On programme votre commercial IA avec tout ce contenu. Il connaît votre offre dans le détail — tarifs, bénéfices, différenciateurs, garanties.",
   },
   {
-    q: "Comment les rendez-vous sont-ils planifiés ?",
-    a: "Converto trouve un créneau en fonction de vos disponibilités et celles de votre prospect, puis le RDV est confirmé directement dans votre agenda.",
+    q: "Est-ce que ça parle vraiment comme un humain ?",
+    a: "Il se présente comme l'assistant de votre marque — il n'usurpe pas une identité humaine. Mais les conversations sont fluides, naturelles et adaptées à votre ton. Vos prospects ne se sentent pas face à une réponse générique.",
   },
   {
-    q: "Est-ce que cela fonctionne le soir et le week-end ?",
-    a: "Oui, 24h/24 et 7j/7. Vos prospects reçoivent une réponse immédiate, même quand vos équipes sont sur le terrain ou indisponibles.",
+    q: "Comment je mesure le retour sur investissement ?",
+    a: "C'est le cœur de Converto : chaque vente ou appel généré par votre commercial IA est tracé et visible dans votre dashboard. Vous savez exactement combien il vous rapporte chaque mois. Pas de flou, pas d'approximation.",
   },
   {
-    q: "Combien de temps faut-il pour être opérationnel ?",
-    a: "En général, quelques jours suffisent après la récupération des accès nécessaires.",
+    q: "Faut-il changer mes outils actuels ?",
+    a: "Non. Votre commercial IA se déploie par-dessus votre site existant et vos réseaux sociaux. Vous ne changez rien à votre stack actuelle.",
   },
   {
-    q: "Est-ce que Converto remplace mon commercial ?",
-    a: "Non. Converto ne remplace pas votre équipe. Il engage le prospect immédiatement, récupère les premières informations et fixe le rendez-vous. Votre commercial intervient ensuite avec un prospect déjà qualifié.",
+    q: "Combien de temps avant d'être opérationnel ?",
+    a: "En général moins d'une semaine après le kick-off. On gère l'intégration technique de notre côté. Vous n'avez rien à configurer.",
   },
   {
-    q: "Et si mes prospects préfèrent être appelés ?",
-    a: "Converto ne vous empêche pas d’appeler. Il permet simplement d’engager le prospect immédiatement par WhatsApp, puis de planifier un appel ou un rendez-vous selon votre processus.",
+    q: "Que se passe-t-il si j'ai plusieurs offres différentes ?",
+    a: "Votre commercial IA peut présenter et vendre plusieurs formations ou niveaux d'accompagnement. Il oriente chaque prospect vers l'offre la plus adaptée à sa situation.",
   },
   {
-    q: "Nous avons déjà quelqu’un qui rappelle les prospects.",
-    a: "Très bien. Converto intervient surtout quand cette personne n’est pas disponible : chantier, pause, soir, week-end, surcharge, absence ou délai de rappel trop long.",
-  },
-  {
-    q: "Nos demandes viennent du SEO, pas de publicité.",
-    a: "Justement : votre SEO génère déjà des opportunités. Converto permet de mieux convertir ces demandes en conversations et rendez-vous.",
+    q: "Puis-je arrêter à tout moment ?",
+    a: "Oui. Vous pouvez arrêter l'abonnement à tout moment avec un préavis de 30 jours. Votre commercial IA est désactivé à l'issue de cette période.",
   },
 ];
 

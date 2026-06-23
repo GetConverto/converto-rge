@@ -6,7 +6,7 @@ export function WhatsappMockup() {
         <span className="h-7 w-7 rounded-full bg-gradient-primary flex items-center justify-center text-white text-xs font-bold">
           ✓
         </span>
-        <span className="text-xs font-semibold text-[#161b25]">Réponse en quelques secondes</span>
+        <span className="text-xs font-semibold text-[#161b25]">Objection traitée</span>
       </div>
       <div
         className="absolute -right-4 bottom-24 z-10 hidden sm:flex items-center gap-2 bg-white rounded-full pl-2 pr-4 py-2 shadow-card animate-float"
@@ -15,7 +15,7 @@ export function WhatsappMockup() {
         <span className="h-7 w-7 rounded-full bg-[#25D366] flex items-center justify-center text-white text-xs">
           📅
         </span>
-        <span className="text-xs font-semibold text-[#161b25]">RDV confirmé</span>
+        <span className="text-xs font-semibold text-[#161b25]">Appel confirmé</span>
       </div>
 
       {/* Phone frame */}
@@ -29,30 +29,37 @@ export function WhatsappMockup() {
               </svg>
             </div>
             <div className="flex-1">
-              <div className="text-sm font-semibold">Converto · Clim Pro</div>
+              <div className="text-sm font-semibold">Converto · Formation Pro</div>
               <div className="text-[10px] text-white/70">en ligne</div>
             </div>
           </div>
           {/* Messages */}
           <div className="p-4 space-y-2.5 min-h-[440px]">
             <Bubble side="in">
-              Bonjour 👋 vous avez fait une demande de devis pour une pompe à chaleur. Je peux vous
-              poser 2 questions rapides ?
+              Bonjour 👋 vous hésitez à rejoindre la formation ? Je peux répondre à vos questions
+              maintenant.
             </Bubble>
-            <Bubble side="out">Oui bien sûr</Bubble>
-            <Bubble side="in">Parfait. Surface à chauffer ?</Bubble>
-            <Bubble side="out">Environ 120 m²</Bubble>
-            <Bubble side="in">Délai souhaité pour les travaux ?</Bubble>
-            <Bubble side="out">Sous 2 mois</Bubble>
+            <Bubble side="out">Oui, j'hésite surtout sur le prix...</Bubble>
             <Bubble side="in">
-              Top, je vous propose un rendez-vous demain à 14h avec un conseiller. Ça vous va ?
+              Je comprends. Pour vous donner un ordre d'idée : nos participants récupèrent en
+              moyenne leur investissement en 6 semaines. Qu'est-ce qui vous a amené sur cette page
+              aujourd'hui ?
             </Bubble>
-            <Bubble side="out">Oui ça me va 👍</Bubble>
+            <Bubble side="out">J'ai vu une pub Instagram</Bubble>
+            <Bubble side="in">
+              Parfait. Est-ce que vous voulez qu'on regarde ensemble si la formation correspond à
+              votre situation ?
+            </Bubble>
+            <Bubble side="out">Oui pourquoi pas</Bubble>
+            <Bubble side="in">
+              Je vous propose un appel découverte de 20 min demain à 11h. Ça vous convient ?
+            </Bubble>
+            <Bubble side="out">Oui c'est parfait 👍</Bubble>
             <div className="mx-auto max-w-[80%] bg-white rounded-xl p-3 shadow-soft border border-black/5">
               <div className="flex items-center gap-2 text-[11px] font-semibold text-[#1948ff]">
-                <span>📅</span> Rendez-vous confirmé
+                <span>📅</span> Appel confirmé
               </div>
-              <div className="text-xs text-[#161b25] mt-1 font-medium">Demain · 14:00 — Visio</div>
+              <div className="text-xs text-[#161b25] mt-1 font-medium">Demain · 11:00 — Zoom</div>
             </div>
           </div>
         </div>

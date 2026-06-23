@@ -77,31 +77,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés" },
+      {
+        title: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
+      },
       {
         name: "description",
         content:
-          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
       },
       {
         property: "og:title",
-        content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés",
+        content: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
       },
       {
         property: "og:description",
         content:
-          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Converto — Transformez vos demandes de devis en rendez-vous qualifiés",
+        content: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
       },
       {
         name: "twitter:description",
         content:
-          "Converto contacte vos prospects par WhatsApp, qualifie leur projet et planifie automatiquement des rendez-vous qualifiés pour les pros du bâtiment.",
+          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
       },
       {
         property: "og:image",
@@ -133,7 +135,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="fr">
       <head>
         <HeadContent />
       </head>

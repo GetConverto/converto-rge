@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Plus } from "lucide-react";
 
 const items = [
   {
@@ -38,25 +39,27 @@ const items = [
 export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="max-w-3xl mx-auto space-y-3">
+    <div className="mx-auto max-w-3xl space-y-3">
       {items.map((it, i) => {
         const isOpen = open === i;
         return (
           <div
             key={i}
-            className="bg-white rounded-2xl border border-border overflow-hidden shadow-soft"
+            className="overflow-hidden rounded-2xl border border-border bg-white shadow-soft"
           >
             <button
               onClick={() => setOpen(isOpen ? null : i)}
-              className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+              className="flex w-full items-center justify-between gap-4 px-4 py-4 text-left sm:px-6 sm:py-5"
             >
-              <span className="font-semibold text-[#161b25]">{it.q}</span>
+              <span className="pr-1 text-[15px] font-semibold leading-snug text-[#161b25] sm:text-base">
+                {it.q}
+              </span>
               <span
-                className={`h-8 w-8 rounded-full bg-surface flex items-center justify-center text-[#1948ff] transition-transform ${
+                className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface text-[#1948ff] transition-transform ${
                   isOpen ? "rotate-45" : ""
                 }`}
               >
-                +
+                <Plus className="h-4 w-4" strokeWidth={2.5} />
               </span>
             </button>
             <div
@@ -65,7 +68,9 @@ export function Faq() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-6 pb-6 text-[#5f6673] leading-relaxed">{it.a}</p>
+                <p className="px-4 pb-5 text-sm leading-relaxed text-[#5f6673] sm:px-6 sm:pb-6 sm:text-base">
+                  {it.a}
+                </p>
               </div>
             </div>
           </div>

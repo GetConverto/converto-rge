@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { ArrowRight, Menu, X } from "lucide-react";
 
 const CAL_URL = "https://calendly.com/gdmf-ai/20mn";
 const LOGO_URL = "/converto-logo.svg?v=2";
@@ -54,17 +55,18 @@ export function Nav() {
           href={CAL_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden lg:inline-flex items-center justify-center h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary shadow-soft hover:shadow-glow transition-all"
+          className="hidden lg:inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition-all"
         >
-          Réserver une démo gratuite →
+          Réserver une démo gratuite
+          <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
         </a>
 
         <button
           aria-label="Menu"
-          className="lg:hidden h-10 w-10 inline-flex items-center justify-center rounded-lg border border-border"
+          className="lg:hidden h-10 w-10 inline-flex items-center justify-center rounded-xl border border-border bg-white text-[#161b25] shadow-soft"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="block w-5 h-0.5 bg-[#161b25] relative before:absolute before:-top-1.5 before:left-0 before:w-5 before:h-0.5 before:bg-[#161b25] after:absolute after:top-1.5 after:left-0 after:w-5 after:h-0.5 after:bg-[#161b25]" />
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
@@ -84,9 +86,10 @@ export function Nav() {
             href={CAL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full justify-center items-center h-11 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary"
+            className="inline-flex w-full justify-center items-center gap-2 h-11 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary"
           >
-            Réserver une démo gratuite →
+            Réserver une démo gratuite
+            <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
           </a>
         </div>
       )}

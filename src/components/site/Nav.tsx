@@ -8,6 +8,7 @@ const links = [
   { href: "#difference", label: "Différence" },
   { href: "#constat", label: "Constat" },
   { href: "#fonctionnement", label: "Fonctionnement" },
+  { href: "#fonctionnalites", label: "Fonctionnalités" },
   { href: "#resultats", label: "Résultats" },
   { href: "#pour-qui", label: "Pour qui" },
   { href: "#chiffres", label: "Chiffres" },

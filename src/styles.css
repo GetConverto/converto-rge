@@ -131,6 +131,13 @@
   box-shadow: 0 24px 70px -20px rgb(64 151 255 / 0.5);
 }
 
+.section-soft-blue {
+  background:
+    radial-gradient(circle at 12% 12%, rgb(64 151 255 / 0.13), transparent 34%),
+    radial-gradient(circle at 88% 18%, rgb(25 72 255 / 0.1), transparent 30%),
+    linear-gradient(180deg, #f8fbff 0%, #f4f8ff 100%);
+}
+
 @keyframes float {
   0%,
   100% {
@@ -148,6 +155,52 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+@keyframes whatsapp-attention {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  18% {
+    transform: translateY(-3px) scale(1.04);
+  }
+  32% {
+    transform: translateY(0) scale(1);
+  }
+  46% {
+    transform: translateY(-2px) scale(1.02);
+  }
+  62% {
+    transform: translateY(0) scale(1);
+  }
+}
+.whatsapp-float-button {
+  animation: whatsapp-attention 4.8s ease-in-out infinite;
+}
+.whatsapp-float-button::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border-radius: 9999px;
+  background: rgb(37 211 102 / 0.2);
+  animation: whatsapp-pulse 4.8s ease-out infinite;
+}
+@keyframes whatsapp-pulse {
+  0%,
+  58%,
+  100% {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  18% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  42% {
+    opacity: 0;
+    transform: scale(1.28);
   }
 }
 .animate-float {

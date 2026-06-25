@@ -4,17 +4,26 @@ import { WhatsappMockup } from "@/components/site/WhatsappMockup";
 import { Faq } from "@/components/site/Faq";
 import {
   ArrowRight,
+  AudioLines,
   BadgeCheck,
   BarChart3,
+  BrainCircuit,
   CalendarCheck2,
   CheckCircle2,
   CircleDollarSign,
   Clock3,
+  Globe2,
+  Instagram,
   LineChart,
+  Megaphone,
   MessageCircle,
+  MessagesSquare,
+  MessageSquareText,
   MousePointerClick,
+  RefreshCw,
   Rocket,
   SearchCheck,
+  Send,
   Settings2,
   ShieldCheck,
   Smartphone,
@@ -56,11 +65,8 @@ const PRICING_PLANS = [
     price: "490",
     featured: true,
     features: [
-      "Audit et configuration complète de votre commercial IA",
+      "Tout Starter inclus, plus :",
       "Déploiement sur 3 canaux (web chat + WhatsApp + Instagram ou Messenger)",
-      "Scénarios de vente personnalisés à votre offre",
-      "Dashboard CA généré, conversations, taux de conversion",
-      "Relances automatiques et campagnes de réactivation",
       "Rapport mensuel synthétique envoyé par email",
       "1 optimisation mensuelle des scripts",
       "Support prioritaire",
@@ -74,11 +80,8 @@ const PRICING_PLANS = [
     price: "790",
     featured: false,
     features: [
-      "Audit et configuration complète de votre commercial IA",
+      "Tout Starter inclus, plus :",
       "Déploiement sur tous les canaux disponibles",
-      "Scénarios de vente personnalisés à votre offre",
-      "Dashboard CA généré, conversations, taux de conversion",
-      "Relances automatiques et campagnes de réactivation",
       "Rapport mensuel détaillé + appel mensuel de 30 min",
       "2 optimisations mensuelles des scripts",
       "Support prioritaire",
@@ -551,6 +554,122 @@ function Page() {
         </div>
       </Section>
 
+      <Section id="fonctionnalites" className="section-soft-blue">
+        <div className="mx-auto max-w-3xl text-left sm:text-center">
+          <Eyebrow>Ce que Converto fait concrètement</Eyebrow>
+          <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
+            Un vrai commercial. Pas un script.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
+            Converto a été conçu pour vendre comme un commercial avec 25 ans d'expérience — pas pour
+            répondre à des questions selon des règles prédéfinies. Voici ce qu'il fait dans chaque
+            conversation.
+          </p>
+        </div>
+
+        <div className="mt-9 grid gap-3 sm:mt-12 sm:gap-5 md:grid-cols-2">
+          {[
+            {
+              icon: BrainCircuit,
+              tone: "blue",
+              t: "Il lit, comprend et s'adapte en temps réel",
+              d: "Converto ne suit pas un arbre de décision. Il comprend le contexte de chaque message, lit le ton du prospect, s'adapte à sa façon de parler et détecte automatiquement les signaux d'achat pour passer en mode closing au bon moment.",
+            },
+            {
+              icon: AudioLines,
+              tone: "dark",
+              t: "Il comprend les notes vocales, photos et PDFs",
+              d: "Vos prospects envoient des vocaux ? Des screenshots ? Des documents ? Converto transcrit les notes vocales automatiquement, comprend les images et continue la conversation sans jamais bloquer sur un format inattendu.",
+            },
+            {
+              icon: RefreshCw,
+              tone: "blue",
+              t: "Il relance les prospects silencieux",
+              d: "Un prospect qui ne répond plus n'est pas perdu. Converto détecte les conversations sans réponse et envoie des relances personnalisées et espacées dans le temps — J+1, J+3, J+7 — en reprenant exactement là où la conversation s'était arrêtée.",
+            },
+            {
+              icon: Megaphone,
+              tone: "green",
+              t: "Il réactive votre base de contacts dormante",
+              d: "Vous avez une liste WhatsApp ou Instagram que vous n'avez pas contactée depuis des mois ? Converto envoie des campagnes de réactivation personnalisées, gère toutes les réponses en temps réel et oriente vers votre offre. Une liste dormante peut générer plusieurs ventes dès la première campagne.",
+            },
+            {
+              icon: CalendarCheck2,
+              tone: "blue",
+              t: "Il réserve des RDV sans quitter la conversation",
+              d: "Converto réserve des appels directement dans la conversation — sans rediriger le prospect vers un lien externe, sans formulaire, sans friction. Le créneau est confirmé en quelques secondes, dans le canal où la conversation a lieu.",
+            },
+            {
+              icon: MessagesSquare,
+              tone: "dark",
+              t: "Il est actif sur tous vos canaux en même temps",
+              d: "Site web, WhatsApp, Instagram, Messenger, Telegram, SMS — un seul commercial IA actif partout où se trouvent vos prospects. Toutes les conversations arrivent dans un inbox unifié. Vous gardez la main en un clic à tout moment.",
+            },
+            {
+              icon: SearchCheck,
+              tone: "blue",
+              t: "Il cherche l'information en temps réel",
+              d: "Si un prospect pose une question dont la réponse n'est pas dans sa base de connaissance, Converto recherche l'information en temps réel et continue la conversation avec une réponse sourcée. Fini le \"je vais vérifier et revenir vers vous\" qui tue les conversions.",
+            },
+            {
+              icon: TrendingUp,
+              tone: "green",
+              t: "Il s'améliore automatiquement à chaque conversation",
+              d: "Le moteur d'optimisation analyse en continu les conversations gagnantes et perdantes. Il identifie les patterns qui mènent à des ventes et améliore les scripts automatiquement. Chaque suggestion est validée avant déploiement. Plus Converto tourne, mieux il convertit.",
+            },
+          ].map((c, i) => (
+            <div
+              key={i}
+              className="group flex gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:-translate-y-1 hover:border-[#1948ff]/20 hover:shadow-card sm:p-6"
+            >
+              <IconBadge icon={c.icon} tone={c.tone as IconTone} />
+              <div>
+                <h3 className="font-semibold leading-snug text-[#161b25]">{c.t}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#5f6673]">{c.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mx-auto mt-9 max-w-5xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-5 text-left sm:mt-12 sm:p-6 sm:text-center">
+          <p className="text-sm font-bold text-[#161b25] sm:text-base">
+            Actif sur 6 canaux — là où se trouvent vos prospects
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2 sm:justify-center sm:gap-2.5">
+            {[
+              { label: "Web chat", icon: Globe2 },
+              { label: "WhatsApp", icon: MessageCircle },
+              { label: "Instagram", icon: Instagram },
+              { label: "Messenger", icon: MessagesSquare },
+              { label: "Telegram", icon: Send },
+              { label: "SMS", icon: MessageSquareText },
+            ].map((channel) => (
+              <div
+                key={channel.label}
+                className="inline-flex items-center gap-2 rounded-full border border-[#1948ff]/10 bg-white px-3 py-2 text-sm font-semibold text-[#161b25] shadow-soft"
+              >
+                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#1948ff]/10 text-[#1948ff]">
+                  <channel.icon className="h-4 w-4" strokeWidth={2.4} />
+                </span>
+                {channel.label}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-8 max-w-3xl text-left sm:mt-10 sm:text-center">
+          <h3 className="text-xl font-bold leading-tight text-[#161b25]">
+            Voir Converto en action sur votre offre
+          </h3>
+          <p className="mt-2 text-sm font-semibold text-[#5f6673]">
+            Démo gratuite de 30 min — sans engagement
+          </p>
+          <div className="mt-5">
+            <CTA>Réserver une démo gratuite</CTA>
+          </div>
+        </div>
+      </Section>
+
       <Section id="resultats">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>Résultats</Eyebrow>
@@ -657,7 +776,7 @@ function Page() {
               {[
                 "vous vendez des formations ou accompagnements à partir de 500 €",
                 "vous avez déjà du trafic sur votre site ou vos réseaux sociaux",
-                "vous perdez du temps à répondre aux mêmes questions en DM ou par email",
+                "vous perdez du temps à répondre aux mêmes questions en DM",
                 "vous voulez mesurer précisément ce que votre outil commercial vous rapporte chaque mois",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] text-[#161b25]">

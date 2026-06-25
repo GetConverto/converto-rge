@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -141,10 +141,49 @@ function RootShell({ children }: { children: ReactNode }) {
       </head>
       <body>
         {children}
+        <FloatingWhatsAppButton />
         <Scripts />
-        <script src="https://api.dmchamp.com/v1/chat-widget/Q57h8ikqx6jY1mdQaern"></script>
       </body>
     </html>
+  );
+}
+
+function FloatingWhatsAppButton() {
+  const [isBubbleVisible, setIsBubbleVisible] = useState(true);
+
+  return (
+    <div className="fixed bottom-5 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+      {isBubbleVisible && (
+        <div className="relative max-w-[260px] rounded-2xl border border-border bg-white py-3 pl-4 pr-10 text-sm font-semibold leading-snug text-[#161b25] shadow-card">
+          Une question ? 😁
+          <button
+            type="button"
+            aria-label="Fermer la bulle WhatsApp"
+            onClick={() => setIsBubbleVisible(false)}
+            className="absolute right-2 top-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-[#8a90a0] transition-colors hover:bg-surface hover:text-[#161b25] focus:outline-none focus:ring-2 focus:ring-[#25D366]/25"
+          >
+            ×
+          </button>
+          <span className="absolute -bottom-1.5 right-7 h-3 w-3 rotate-45 border-b border-r border-border bg-white" />
+        </div>
+      )}
+      <a
+        href="https://wa.me/33695084949"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Contacter Converto sur WhatsApp"
+        className="whatsapp-float-button group relative inline-flex h-[60px] w-[60px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_18px_45px_rgba(37,211,102,0.35)] ring-8 ring-[#25D366]/10 transition-all hover:-translate-y-1 hover:shadow-[0_22px_55px_rgba(37,211,102,0.45)] focus:outline-none focus:ring-4 focus:ring-[#25D366]/30"
+      >
+        <svg
+          viewBox="0 0 32 32"
+          aria-hidden="true"
+          className="h-8 w-8 transition-transform group-hover:scale-105"
+          fill="currentColor"
+        >
+          <path d="M16.01 3.2c-7.04 0-12.77 5.71-12.77 12.74 0 2.25.59 4.44 1.72 6.37L3.13 29l6.86-1.8a12.8 12.8 0 0 0 6.02 1.53c7.04 0 12.77-5.71 12.77-12.74S23.05 3.2 16.01 3.2Zm0 23.38c-1.93 0-3.82-.52-5.47-1.49l-.39-.23-4.07 1.07 1.09-3.96-.26-.41a10.56 10.56 0 0 1-1.62-5.62c0-5.84 4.81-10.6 10.72-10.6s10.72 4.76 10.72 10.6-4.81 10.64-10.72 10.64Zm5.88-7.95c-.32-.16-1.91-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.84 1.05-1.03 1.26-.19.22-.38.24-.7.08-.32-.16-1.36-.5-2.6-1.6-.96-.85-1.61-1.9-1.8-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.38.49-.57.16-.19.22-.32.32-.54.11-.22.05-.41-.03-.57-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.54-.73-.55h-.62c-.22 0-.57.08-.86.41-.3.32-1.13 1.1-1.13 2.69s1.16 3.13 1.32 3.35c.16.22 2.28 3.48 5.53 4.88.77.33 1.38.53 1.85.68.78.25 1.48.21 2.04.13.62-.09 1.91-.78 2.18-1.54.27-.75.27-1.4.19-1.54-.08-.13-.3-.21-.62-.38Z" />
+        </svg>
+      </a>
+    </div>
   );
 }
 

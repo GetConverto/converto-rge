@@ -707,29 +707,29 @@ function Page() {
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>Les chiffres parlent</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Pourquoi la réactivité commerciale fait la différence dans la vente de formations
+            Ce que vos chiffres cachent — et ce que Converto change
           </h2>
         </div>
 
         <div className="mt-9 grid gap-4 sm:mt-12 md:grid-cols-3 md:gap-5">
           {[
             {
-              icon: Zap,
-              title: "Répondre en moins de 5 minutes multiplie par 21 les chances de vendre",
-              stat: "×21",
-              desc: "Les entreprises qui engagent un prospect dans les 5 minutes ont jusqu'à 21 fois plus de chances de le convertir que celles qui attendent 30 minutes ou plus.",
+              icon: TrendingDown,
+              title: "97% de vos visiteurs repartent sans acheter ni vous contacter",
+              stat: "97%",
+              desc: "Même avec une page de vente optimisée, la quasi-totalité de votre trafic s'évapore en silence. Ces prospects ont vu votre offre. Ils hésitaient. Personne n'était là pour les convaincre.",
             },
             {
-              icon: Trophy,
-              title: "Le premier à engager la conversation remporte souvent la vente",
-              stat: "78%",
-              desc: "Jusqu'à 78% des clients choisissent le premier prestataire qui leur répond. Dans un marché de la formation en ligne très concurrentiel, chaque minute compte.",
+              icon: MessageCircle,
+              title: "Les visiteurs qui engagent une conversation convertissent 83% de plus",
+              stat: "83%",
+              desc: "Ce n'est pas la qualité de votre offre qui fait la différence à ce stade — c'est le fait qu'une conversation ait lieu. Converto la déclenche automatiquement, 24h/24, sur votre site et vos réseaux.",
             },
             {
-              icon: Smartphone,
-              title: "WhatsApp et Instagram sont lus quasi instantanément",
-              stat: "98%",
-              desc: "Ces canaux affichent 95 à 98% de taux d'ouverture, contre 20 à 35% pour l'email. Votre commercial IA est actif là où vos prospects passent leur temps.",
+              icon: Rocket,
+              title: "Le marché de la formation en ligne va faire ×5 d'ici 2030",
+              stat: "×5",
+              desc: "26 milliards de dollars en 2024. 134 milliards en 2030. Le marché explose — et la concurrence avec. Celui qui répond le premier à ses prospects aujourd'hui construit une avance que ses concurrents auront du mal à rattraper.",
             },
           ].map((c, i) => (
             <div
@@ -751,14 +751,15 @@ function Page() {
           ))}
         </div>
         <p className="mt-4 text-center text-xs text-[#8a90a0]">
-          Sources : MIT / Harvard Business Review / Speed-to-Lead Benchmarks
+          Sources : Benchmarks taux de conversion — secteur formation en ligne / Étude taux de
+          conversion chat en direct — coffeex.co / 2025 / Grand View Research — Digital Education
+          Market, 2024
         </p>
 
         <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-5 text-left sm:mt-12 sm:text-center">
           <p className="text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Aujourd'hui, la plupart des coachs répondent plusieurs heures après qu'un prospect leur
-            a écrit. Converto engage la conversation en quelques secondes — dans votre ton, avec vos
-            arguments.
+            Vous avez travaillé pour attirer ces visiteurs. Converto s'assure qu'ils ne repartent
+            pas sans avoir eu une vraie conversation commerciale.
           </p>
         </div>
       </Section>

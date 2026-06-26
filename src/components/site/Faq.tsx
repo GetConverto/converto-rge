@@ -4,7 +4,7 @@ import { Plus } from "lucide-react";
 const items = [
   {
     q: "Est-ce que Converto a fait ses preuves ? Vous avez des résultats concrets ?",
-    a: "Oui. Sur nos premiers déploiements, nous avons mesuré : 40% de récupération sur les paniers abandonnés (contre 9% en email classique), un temps de réponse réduit de 24h à 36 secondes, et un taux de réservation d'appels multiplié par 4 à 6 par rapport aux formulaires de contact classiques. Ces chiffres sont visibles dans le dashboard de chaque client dès le premier mois.",
+    a: "Oui. Sur nos premiers déploiements, nous avons mesuré : 40% de récupération sur les paniers abandonnés (contre 9% en email classique), un temps de réponse réduit de 24h à 15 secondes, et un taux de réservation d'appels multiplié par 4 à 6 par rapport aux formulaires de contact classiques. Ces chiffres sont visibles dans le dashboard de chaque client dès le premier mois.",
   },
   {
     q: "En quoi c'est différent d'un chatbot ?",

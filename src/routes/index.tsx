@@ -44,7 +44,7 @@ const PRICING_PLANS = [
     name: "Starter",
     badge: "",
     description: "Idéal pour un coach solo qui veut un premier commercial IA sur son site.",
-    setup: "800",
+    setup: "1500",
     price: "290",
     featured: false,
     features: [
@@ -60,7 +60,7 @@ const PRICING_PLANS = [
     name: "Growth",
     badge: "Le plus populaire",
     description: "Idéal pour un coach établi avec une audience et plusieurs canaux actifs.",
-    setup: "1200",
+    setup: "2000",
     price: "490",
     featured: true,
     features: [
@@ -75,7 +75,7 @@ const PRICING_PLANS = [
     name: "Scale",
     badge: "",
     description: "Idéal pour un infopreneur avec plusieurs offres ou forte volumétrie.",
-    setup: "1500",
+    setup: "2500",
     price: "790",
     featured: false,
     features: [
@@ -117,7 +117,7 @@ const DIFFERENCE_ROWS = [
   {
     label: "Temps de réponse",
     classic: "Dépend des horaires et de la disponibilité",
-    converto: "36 secondes, 24h/24, 7j/7",
+    converto: "15 secondes, 24h/24, 7j/7",
   },
   {
     label: "Objectif",
@@ -848,9 +848,9 @@ function Page() {
             },
             {
               icon: Zap,
-              title: "Temps de réponse réduit de 24h à 36 secondes",
-              stat: "36s",
-              desc: "Vos prospects obtiennent une réponse en 36 secondes — avant même d'avoir fermé l'onglet. Fini les leads qui refroidissent pendant la nuit ou le week-end.",
+              title: "Temps de réponse réduit de 24h à 15 secondes",
+              stat: "15s",
+              desc: "Vos prospects obtiennent une réponse en 15 secondes — avant même d'avoir fermé l'onglet. Fini les leads qui refroidissent pendant la nuit ou le week-end.",
             },
             {
               icon: CalendarCheck2,

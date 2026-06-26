@@ -155,7 +155,7 @@ function FloatingWhatsAppButton() {
     <div className="fixed bottom-5 right-4 z-50 flex max-w-[calc(100vw-2rem)] flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       {isBubbleVisible && (
         <div className="relative max-w-[260px] rounded-2xl border border-border bg-white py-3 pl-4 pr-10 text-sm font-semibold leading-snug text-[#161b25] shadow-card">
-          Une question ? 😁
+          Tu veux tester Converto ? Clique ici 👇
           <button
             type="button"
             aria-label="Fermer la bulle WhatsApp"

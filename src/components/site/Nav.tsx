@@ -5,14 +5,10 @@ const CAL_URL = "https://calendly.com/gdmf-ai/20mn";
 const LOGO_URL = "/converto-logo.svg?v=2";
 
 const links = [
-  { href: "#difference", label: "Différence" },
-  { href: "#constat", label: "Constat" },
-  { href: "#fonctionnement", label: "Fonctionnement" },
-  { href: "#fonctionnalites", label: "Fonctionnalités" },
+  { href: "#difference", label: "Pourquoi Converto" },
+  { href: "#fonctionnement", label: "Comment ça marche" },
   { href: "#resultats", label: "Résultats" },
-  { href: "#pour-qui", label: "Pour qui" },
-  { href: "#chiffres", label: "Chiffres" },
-  { href: "#offres", label: "Tarifs" },
+  { href: "#pour-qui", label: "Tarifs" },
   { href: "#faq", label: "FAQ" },
 ];
 

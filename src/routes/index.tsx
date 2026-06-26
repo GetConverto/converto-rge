@@ -26,10 +26,9 @@ import {
   Send,
   Settings2,
   ShieldCheck,
-  Smartphone,
+  ShoppingCart,
   Sparkles,
   Target,
-  Trophy,
   TrendingDown,
   TrendingUp,
   XCircle,
@@ -114,6 +113,11 @@ const DIFFERENCE_ROWS = [
     label: "Disponibilité",
     classic: "Variable selon l'outil",
     converto: "24h/24, 7j/7, sans exception",
+  },
+  {
+    label: "Temps de réponse",
+    classic: "Dépend des horaires et de la disponibilité",
+    converto: "36 secondes, 24h/24, 7j/7",
   },
   {
     label: "Objectif",
@@ -678,7 +682,7 @@ function Page() {
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
             Contrairement à un chatbot classique, Converto ne se contente pas de répondre — il
-            convertit. Et chaque euro généré est visible.
+            convertit. Voici les chiffres mesurés sur nos premiers déploiements.
           </p>
         </div>
         <div className="mx-auto mt-9 max-w-5xl overflow-hidden rounded-2xl border border-border bg-white shadow-soft sm:mt-12">
@@ -709,7 +713,7 @@ function Page() {
                   icon: TrendingUp,
                   label: "Taux de conversion",
                   desc: "Conversations transformées en appels réservés ou achats directs",
-                  example: "Ex : 11 appels réservés sur 47 conversations",
+                  example: "Ex : taux de réservation multiplié par 4 à 6 vs formulaire classique",
                 },
                 {
                   icon: CircleDollarSign,
@@ -747,7 +751,8 @@ function Page() {
                 Vous avez déjà fait le plus dur : attirer des visiteurs.
               </h4>
               <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                Converto s'assure qu'ils ne repartent pas sans avoir été convaincus.
+                Converto s'assure qu'ils ne repartent pas sans avoir eu une vraie conversation
+                commerciale — et vous voyez chaque euro généré en temps réel.
               </p>
             </div>
           </div>
@@ -829,29 +834,35 @@ function Page() {
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>Les chiffres parlent</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Ce que vos chiffres cachent — et ce que Converto change
+            Des résultats mesurés. Pas des promesses.
           </h2>
         </div>
 
-        <div className="mt-9 grid gap-4 sm:mt-12 md:grid-cols-3 md:gap-5">
+        <div className="mt-9 grid gap-4 sm:mt-12 md:grid-cols-2 md:gap-5">
           {[
+            {
+              icon: ShoppingCart,
+              title: "40% des paniers abandonnés récupérés — contre 9% en email classique",
+              stat: "40%",
+              desc: "Sur nos premiers déploiements e-commerce, Converto récupère 40% des paniers abandonnés via une conversation directe sur WhatsApp ou Instagram. L'email de relance classique tourne à 9%. La différence : une vraie conversation vs un email ignoré.",
+            },
+            {
+              icon: Zap,
+              title: "Temps de réponse réduit de 24h à 36 secondes",
+              stat: "36s",
+              desc: "Vos prospects obtiennent une réponse en 36 secondes — avant même d'avoir fermé l'onglet. Fini les leads qui refroidissent pendant la nuit ou le week-end.",
+            },
+            {
+              icon: CalendarCheck2,
+              title: "Taux de réservation d'appels multiplié par 4 à 6",
+              stat: "×4 à ×6",
+              desc: "Les formulaires de contact convertissent peu — le prospect doit faire l'effort d'aller sur une page externe et remplir des champs. Converto transforme ce tunnel passif en discussion active sur WhatsApp ou Instagram. L'effort est quasi nul, le taux de réservation explose mécaniquement.",
+            },
             {
               icon: TrendingDown,
               title: "97% de vos visiteurs repartent sans acheter ni vous contacter",
               stat: "97%",
               desc: "Même avec une page de vente optimisée, la quasi-totalité de votre trafic s'évapore en silence. Ces prospects ont vu votre offre. Ils hésitaient. Personne n'était là pour les convaincre.",
-            },
-            {
-              icon: MessageCircle,
-              title: "Les visiteurs qui engagent une conversation convertissent 83% de plus",
-              stat: "83%",
-              desc: "Ce n'est pas la qualité de votre offre qui fait la différence à ce stade — c'est le fait qu'une conversation ait lieu. Converto la déclenche automatiquement, 24h/24, sur votre site et vos réseaux.",
-            },
-            {
-              icon: Rocket,
-              title: "Le marché de la formation en ligne va faire ×5 d'ici 2030",
-              stat: "×5",
-              desc: "26 milliards de dollars en 2024. 134 milliards en 2030. Le marché explose — et la concurrence avec. Celui qui répond le premier à ses prospects aujourd'hui construit une avance que ses concurrents auront du mal à rattraper.",
             },
           ].map((c, i) => (
             <div
@@ -873,15 +884,14 @@ function Page() {
           ))}
         </div>
         <p className="mt-4 text-center text-xs text-[#8a90a0]">
-          Sources : Benchmarks taux de conversion — secteur formation en ligne / Étude taux de
-          conversion chat en direct — coffeex.co / 2025 / Grand View Research — Digital Education
-          Market, 2024
+          Sources : Résultats mesurés — déploiements Converto 2025 / Benchmarks taux de conversion
+          secteur formation en ligne
         </p>
 
         <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-5 text-left sm:mt-12 sm:text-center">
           <p className="text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Vous avez travaillé pour attirer ces visiteurs. Converto s'assure qu'ils ne repartent
-            pas sans avoir eu une vraie conversation commerciale.
+            Ces chiffres ne sont pas des projections. Ce sont des résultats mesurés sur nos premiers
+            déploiements. Votre dashboard vous montrera les vôtres.
           </p>
         </div>
       </Section>

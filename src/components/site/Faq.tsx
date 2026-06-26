@@ -3,6 +3,10 @@ import { Plus } from "lucide-react";
 
 const items = [
   {
+    q: "Est-ce que Converto a fait ses preuves ? Vous avez des résultats concrets ?",
+    a: "Oui. Sur nos premiers déploiements, nous avons mesuré : 40% de récupération sur les paniers abandonnés (contre 9% en email classique), un temps de réponse réduit de 24h à 36 secondes, et un taux de réservation d'appels multiplié par 4 à 6 par rapport aux formulaires de contact classiques. Ces chiffres sont visibles dans le dashboard de chaque client dès le premier mois.",
+  },
+  {
     q: "En quoi c'est différent d'un chatbot ?",
     a: "Un chatbot répond à des questions selon des règles prédéfinies. Votre commercial IA Converto comprend le contexte de la conversation, gère les objections commerciales en temps réel, s'adapte à chaque prospect et oriente activement vers un achat ou un appel. L'objectif n'est pas de répondre — c'est de vendre.",
   },

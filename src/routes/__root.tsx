@@ -78,32 +78,32 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        title: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
+        title: "Converto — Ne laissez plus partir des personnes prêtes à acheter",
       },
       {
         name: "description",
         content:
-          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
+          "Converto répond immédiatement aux personnes qui vous contactent, traite leurs objections et les accompagne jusqu'au rendez-vous, au devis ou à l'achat.",
       },
       {
         property: "og:title",
-        content: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
+        content: "Converto — Ne laissez plus partir des personnes prêtes à acheter",
       },
       {
         property: "og:description",
         content:
-          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
+          "Converto répond immédiatement aux personnes qui vous contactent, traite leurs objections et les accompagne jusqu'au rendez-vous, au devis ou à l'achat.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       {
         name: "twitter:title",
-        content: "Converto — Pas un chatbot. Un vrai commercial IA qui vend vos formations 24h/24.",
+        content: "Converto — Ne laissez plus partir des personnes prêtes à acheter",
       },
       {
         name: "twitter:description",
         content:
-          "Converto installe un commercial IA sur votre site et vos réseaux. Il connaît votre offre, répond aux objections et génère du CA mesurable — pendant que vous faites autre chose.",
+          "Converto répond immédiatement aux personnes qui vous contactent, traite leurs objections et les accompagne jusqu'au rendez-vous, au devis ou à l'achat.",
       },
       {
         property: "og:image",

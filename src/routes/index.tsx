@@ -4,30 +4,21 @@ import { WhatsappMockup } from "@/components/site/WhatsappMockup";
 import { Faq } from "@/components/site/Faq";
 import {
   ArrowRight,
-  AudioLines,
   BadgeCheck,
   BarChart3,
-  BrainCircuit,
+  Calculator,
   CalendarCheck2,
   CheckCircle2,
+  ChevronDown,
   CircleDollarSign,
-  Globe2,
-  Instagram,
   LineChart,
-  Megaphone,
-  MessageCircle,
   MessagesSquare,
-  MessageSquareText,
-  RefreshCw,
   Rocket,
   SearchCheck,
-  Send,
   Settings2,
   ShieldCheck,
-  ShoppingCart,
   Sparkles,
   Target,
-  TrendingDown,
   TrendingUp,
   XCircle,
   Zap,
@@ -41,15 +32,16 @@ const PRICING_PLANS = [
   {
     name: "Starter",
     badge: "",
-    description: "Idéal pour un coach solo qui veut un premier commercial IA sur son site.",
+    description:
+      "Idéal pour une entreprise à ticket élevé qui veut capter plus de demandes sur un canal prioritaire.",
     setup: "1500",
     price: "290",
     featured: false,
     features: [
-      "Audit et configuration complète de votre commercial IA",
+      "Audit de votre offre et scénarios de vente",
       "Déploiement sur 1 canal au choix",
       "Scénarios de vente personnalisés à votre offre",
-      "Dashboard CA généré, conversations, taux de conversion",
+      "Dashboard rendez-vous, devis et CA attribué",
       "Relances automatiques et campagnes de réactivation",
       "Support par email",
     ],
@@ -57,7 +49,7 @@ const PRICING_PLANS = [
   {
     name: "Growth",
     badge: "Le plus populaire",
-    description: "Idéal pour un coach établi avec une audience et plusieurs canaux actifs.",
+    description: "Idéal pour une entreprise qui reçoit des messages sur plusieurs canaux actifs.",
     setup: "2000",
     price: "490",
     featured: true,
@@ -72,7 +64,8 @@ const PRICING_PLANS = [
   {
     name: "Scale",
     badge: "",
-    description: "Idéal pour un infopreneur avec plusieurs offres ou forte volumétrie.",
+    description:
+      "Idéal pour une équipe avec plusieurs offres, points de vente ou forte volumétrie.",
     setup: "2500",
     price: "790",
     featured: false,
@@ -86,6 +79,12 @@ const PRICING_PLANS = [
   },
 ] as const;
 
+const ROI_PLANS = [
+  { name: "Starter", price: 290 },
+  { name: "Growth", price: 490 },
+  { name: "Scale", price: 790 },
+] as const;
+
 const DIFFERENCE_ROWS = [
   {
     label: 'Face à "c\'est trop cher"',
@@ -95,12 +94,12 @@ const DIFFERENCE_ROWS = [
   {
     label: "Connaissance de votre offre",
     classic: "Mots-clés et FAQ basiques",
-    converto: "Maîtrise complète de vos formations, tarifs et objections fréquentes",
+    converto: "Maîtrise complète de vos offres, tarifs et objections fréquentes",
   },
   {
     label: "Résultat mesurable",
     classic: "Aucun — impossible à évaluer",
-    converto: "CA généré visible dans votre dashboard chaque mois",
+    converto: "Conversations qualifiées, rendez-vous et ventes attribuées dans votre dashboard",
   },
   {
     label: "Ton et style",
@@ -121,6 +120,45 @@ const DIFFERENCE_ROWS = [
     label: "Objectif",
     classic: "Traiter des demandes simples",
     converto: "Convaincre, convertir, vendre",
+  },
+] as const;
+
+const SOLUTION_STEPS = [
+  {
+    t: "Audit de votre offre",
+    d: "On analyse vos offres, vos arguments de vente, vos tarifs et les objections les plus fréquentes de vos futurs clients.",
+    n: "01",
+    icon: SearchCheck,
+  },
+  {
+    t: "Votre façon de vendre, disponible en continu",
+    d: "Nous reprenons votre offre, vos arguments de vente et votre manière de convaincre. Les réponses restent dans votre ton, avec vos mots, sans discours générique.",
+    n: "02",
+    icon: Settings2,
+  },
+  {
+    t: "Déploiement sur vos canaux",
+    d: "Site web, WhatsApp, Instagram, Messenger — vos demandes reçoivent une réponse là où elles arrivent.",
+    n: "03",
+    icon: Rocket,
+  },
+  {
+    t: "Prise de RDV sans friction",
+    d: "La personne réserve directement un rendez-vous dans la conversation, sans être redirigée vers un lien externe.",
+    n: "04",
+    icon: CalendarCheck2,
+  },
+  {
+    t: "Optimisation mensuelle",
+    d: "Chaque mois, on analyse les conversations réelles, les objections fréquentes et les points de blocage pour améliorer les scénarios de conversion.",
+    n: "05",
+    icon: LineChart,
+  },
+  {
+    t: "Reporting commercial",
+    d: "Vous suivez les conversations, les rendez-vous, les ventes attribuées et les opportunités à relancer. Pas de pilotage à l'aveugle.",
+    n: "06",
+    icon: CircleDollarSign,
   },
 ] as const;
 
@@ -258,6 +296,14 @@ function PriceDisplay({ price, billingCycle }: { price: string; billingCycle: Bi
 
 function Page() {
   const [billingCycle, setBillingCycle] = useState<BillingCycle>("monthly");
+  const [openSolutionStep, setOpenSolutionStep] = useState("01");
+  const [averageClientValue, setAverageClientValue] = useState(2000);
+  const [marginRate, setMarginRate] = useState(30);
+  const [selectedRoiPlan, setSelectedRoiPlan] =
+    useState<(typeof ROI_PLANS)[number]["name"]>("Starter");
+  const monthlyCost = ROI_PLANS.find((plan) => plan.name === selectedRoiPlan)?.price ?? 290;
+  const averageProfit = Math.max(0, averageClientValue) * (Math.max(0, marginRate) / 100);
+  const clientsNeeded = averageProfit > 0 ? monthlyCost / averageProfit : 0;
 
   return (
     <div id="top" className="bg-white text-[#161b25]">
@@ -273,24 +319,25 @@ function Page() {
         />
         <div className="max-w-7xl mx-auto grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
           <div className="animate-fade-up">
-            <Eyebrow>Pour les coachs, formateurs et infopreneurs français</Eyebrow>
+            <Eyebrow>
+              Pour les entreprises qui veulent transformer plus de visiteurs en clients.
+            </Eyebrow>
             <h1 className="mt-5 text-[2.35rem] font-bold leading-[1.05] sm:text-5xl lg:text-[3.35rem]">
-              Pas un chatbot. Un vrai <span className="text-gradient">commercial IA</span> qui
-              connaît votre offre, lève les objections et{" "}
-              <span className="text-gradient">vend vos formations</span> — 24h/24.
+              Vos <span className="text-gradient">futurs clients</span> ne devraient jamais{" "}
+              <span className="text-gradient">repartir sans réponse</span>.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5f6673] sm:text-lg">
-              Converto installe et gère un commercial IA sur votre site et vos réseaux sociaux. Vos
-              prospects obtiennent une réponse immédiate et convaincante. Vous voyez le CA généré en
-              temps réel dans votre dashboard.
+              Chaque semaine, des personnes sont prêtes à vous contacter, demandent un devis ou
+              hésitent avant de passer à l'action. Beaucoup repartent simplement parce qu'elles
+              n'obtiennent pas une réponse au bon moment.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <CTA>Réserver une démo gratuite</CTA>
+              <CTA>Voir si c'est rentable pour moi</CTA>
               <a
-                href="#fonctionnement"
+                href="#probleme"
                 className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full border border-border bg-white px-6 text-[15px] font-semibold text-[#161b25] transition-all hover:border-[#1948ff]/30 sm:w-auto"
               >
-                Voir comment ça fonctionne
+                Voir ce qui change concrètement
                 <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
               </a>
             </div>
@@ -309,19 +356,88 @@ function Page() {
         </div>
       </section>
 
-      <Section id="difference" className="bg-surface">
+      <Section id="probleme" className="bg-surface">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
-          <Eyebrow>Différence</Eyebrow>
+          <Eyebrow>Le vrai manque à gagner</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Ce que votre chatbot actuel ne fait pas
+            Ce qui se passe quand personne n'est disponible pour répondre
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            La plupart des coachs ont déjà essayé un chatbot. Et la plupart ont été déçus. Voici
-            pourquoi — et en quoi Converto est fondamentalement différent.
+            Le problème n'est pas seulement le délai de réponse. C'est tout ce que vous ne voyez
+            jamais : la question non posée, l'objection non traitée, le rendez-vous jamais réservé.
           </p>
         </div>
 
-        <div className="mt-9 grid gap-4 md:hidden">
+        <div className="mt-9 grid gap-4 sm:mt-12 lg:grid-cols-2 lg:gap-5">
+          <div className="rounded-2xl border border-red-100 bg-white p-5 shadow-soft sm:p-7">
+            <div className="inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1.5 text-xs font-bold uppercase text-red-600">
+              <XCircle className="h-4 w-4" strokeWidth={2.5} />
+              Aujourd'hui
+            </div>
+            <div className="mt-6 space-y-3">
+              {[
+                "Une personne découvre votre entreprise.",
+                "Elle hésite.",
+                "Elle ne trouve pas de réponse au bon moment.",
+                "Elle repart.",
+                "Vous ne saurez jamais pourquoi.",
+              ].map((step, index, steps) => (
+                <div key={step}>
+                  <div className="rounded-xl border border-red-100 bg-red-50/60 px-4 py-3 text-sm font-semibold leading-relaxed text-[#161b25]">
+                    {step}
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="flex justify-center py-1.5">
+                      <ArrowRight className="h-4 w-4 rotate-90 text-red-400" strokeWidth={2.4} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="rounded-2xl border border-[#16a34a]/25 bg-white p-5 shadow-soft sm:p-7">
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#16a34a]/10 px-3 py-1.5 text-xs font-bold uppercase text-[#15803d]">
+              <CheckCircle2 className="h-4 w-4" strokeWidth={2.5} />
+              Avec Converto
+            </div>
+            <div className="mt-6 space-y-3">
+              {[
+                "La personne est contactée en quelques secondes.",
+                "Ses questions trouvent une réponse claire.",
+                "Ses objections sont levées.",
+                "Elle réserve un rendez-vous ou avance vers l'achat.",
+                "Votre équipe récupère une opportunité beaucoup plus avancée.",
+              ].map((step, index, steps) => (
+                <div key={step}>
+                  <div className="rounded-xl border border-[#16a34a]/20 bg-[#16a34a]/10 px-4 py-3 text-sm font-semibold leading-relaxed text-[#161b25]">
+                    {step}
+                  </div>
+                  {index < steps.length - 1 && (
+                    <div className="flex justify-center py-1.5">
+                      <ArrowRight className="h-4 w-4 rotate-90 text-[#15803d]" strokeWidth={2.4} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="comparatif">
+        <div className="mx-auto max-w-3xl text-left sm:text-center">
+          <Eyebrow>Pourquoi Converto</Eyebrow>
+          <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
+            Vos visiteurs n'ont pas besoin d'un chatbot. Ils ont besoin d'un commercial.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
+            La différence est simple : un chatbot attend une question. Converto fait avancer la
+            vente, rassure la personne qui hésite et l'aide à passer à l'étape suivante.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-4 md:hidden">
           {DIFFERENCE_ROWS.map((row) => (
             <div
               key={row.label}
@@ -339,7 +455,7 @@ function Page() {
                 <div className="rounded-xl border border-[#16a34a]/20 bg-[#16a34a]/10 p-3">
                   <div className="flex items-center gap-2 text-xs font-bold uppercase text-[#15803d]">
                     <CheckCircle2 className="h-4 w-4" strokeWidth={2.5} />
-                    Commercial IA Converto
+                    Avec Converto
                   </div>
                   <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
                     {row.converto}
@@ -367,7 +483,7 @@ function Page() {
                 <th className="w-[36%] bg-[#16a34a]/10 px-5 py-4 text-sm font-bold text-[#15803d]">
                   <span className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4" strokeWidth={2.5} />
-                    Commercial IA Converto
+                    Avec Converto
                     <span className="rounded-full bg-white px-2 py-0.5 text-[10px] font-bold uppercase text-[#15803d] ring-1 ring-[#16a34a]/20">
                       Orienté vente
                     </span>
@@ -407,153 +523,129 @@ function Page() {
         <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 px-5 py-4 text-left sm:mt-8 sm:px-6 sm:py-5 sm:text-center">
           <p className="inline-flex flex-col items-start gap-3 text-lg font-bold text-[#161b25] sm:flex-row sm:items-center sm:justify-center">
             <IconBadge icon={Target} tone="blue" size="sm" />
-            Un chatbot répond. Un commercial IA convainc. Ce n'est pas le même métier.
+            Un chatbot répond. Converto fait avancer la vente. Ce n'est pas le même métier.
           </p>
         </div>
       </Section>
 
-      <Section id="fonctionnement">
+      <Section id="fonctionnement" className="bg-surface">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>La solution</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Converto installe, configure et optimise votre commercial IA. Vous n'avez rien à faire.
+            Vos meilleurs arguments de vente deviennent disponibles 24h/24.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Une seule mécanique : chaque visiteur qui hésite reçoit une réponse immédiate et
-            convaincante, puis Converto le guide vers un achat ou un appel découverte.
+            Une mécanique simple : chaque personne qui vous contacte obtient immédiatement une
+            réponse, une clarification de son besoin et une prochaine étape commerciale sans
+            friction.
           </p>
         </div>
 
-        <div className="mx-auto mt-9 max-w-2xl space-y-2 sm:mt-12 sm:space-y-3">
-          {[
-            {
-              t: "Audit de votre offre",
-              d: "On analyse vos formations, vos arguments de vente, vos tarifs et les objections les plus fréquentes de vos prospects. Votre commercial IA les connaîtra mieux que la plupart des vendeurs humains.",
-              n: "01",
-              icon: SearchCheck,
-            },
-            {
-              t: "Configuration sur-mesure",
-              d: "On programme votre commercial IA pour qu'il réponde dans votre ton, avec vos mots, vos arguments. Rien de générique.",
-              n: "02",
-              icon: Settings2,
-            },
-            {
-              t: "Déploiement sur vos canaux",
-              d: "Site web, WhatsApp, Instagram, Messenger — votre commercial IA est actif partout où vos prospects vous cherchent.",
-              n: "03",
-              icon: Rocket,
-            },
-            {
-              t: "Prise de RDV sans friction",
-              d: "Votre commercial IA réserve des appels directement dans la conversation, sans rediriger le prospect vers un lien externe. Le RDV est confirmé sans quitter le canal.",
-              n: "04",
-              icon: CalendarCheck2,
-            },
-            {
-              t: "Optimisation mensuelle",
-              d: "Chaque mois, on analyse les conversations et on améliore les scripts pour augmenter le taux de conversion.",
-              n: "05",
-              icon: LineChart,
-            },
-            {
-              t: "Reporting CA généré",
-              d: "Vous recevez un rapport mensuel avec le CA directement attribuable à votre commercial IA. Pas de flou sur la rentabilité.",
-              n: "06",
-              icon: CircleDollarSign,
-            },
-          ].map((s, i, arr) => (
-            <div key={i} className="relative">
-              <div className="group flex items-start gap-4 rounded-2xl border border-border bg-white p-4 shadow-soft transition-all duration-300 hover:-translate-y-0.5 hover:border-[#1948ff]/20 hover:shadow-card sm:gap-5 sm:p-5">
-                <div className="relative shrink-0">
-                  <IconBadge icon={s.icon} tone="blue" size="lg" />
-                  <span className="absolute -right-2 -top-2 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-white px-1 text-[10px] font-bold text-[#1948ff] shadow-soft ring-1 ring-[#1948ff]/10">
-                    {s.n}
+        <div className="mx-auto mt-8 max-w-3xl space-y-3 sm:mt-10">
+          {SOLUTION_STEPS.map((s) => {
+            const isOpen = openSolutionStep === s.n;
+
+            return (
+              <div
+                key={s.n}
+                className={`group relative overflow-hidden rounded-2xl border bg-white shadow-soft transition-all duration-300 ${
+                  isOpen
+                    ? "border-[#1948ff]/30 shadow-card"
+                    : "border-border hover:-translate-y-0.5 hover:border-[#1948ff]/20 hover:shadow-card"
+                }`}
+              >
+                <div
+                  className={`absolute inset-y-0 left-0 w-1 transition-colors ${
+                    isOpen ? "bg-gradient-primary" : "bg-transparent"
+                  }`}
+                />
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  aria-controls={`solution-step-${s.n}`}
+                  onClick={() => setOpenSolutionStep(isOpen ? "" : s.n)}
+                  className="flex w-full items-center gap-3 p-4 text-left sm:gap-4 sm:p-5"
+                >
+                  <div className="relative shrink-0">
+                    <IconBadge icon={s.icon} tone={isOpen ? "blue" : "dark"} size="lg" />
+                    <span
+                      className={`absolute -right-2 -top-2 inline-flex h-6 min-w-6 items-center justify-center rounded-full px-1 text-[10px] font-bold shadow-soft ring-1 transition-colors ${
+                        isOpen
+                          ? "bg-[#1948ff] text-white ring-[#1948ff]/20"
+                          : "bg-white text-[#1948ff] ring-[#1948ff]/10"
+                      }`}
+                    >
+                      {s.n}
+                    </span>
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold leading-snug text-[#161b25]">{s.t}</h3>
+                  </div>
+                  <span
+                    className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border transition-all duration-300 ${
+                      isOpen
+                        ? "rotate-180 border-[#1948ff] bg-[#1948ff] text-white"
+                        : "border-border bg-surface text-[#5f6673] group-hover:border-[#1948ff]/30 group-hover:text-[#1948ff]"
+                    }`}
+                  >
+                    <ChevronDown className="h-4 w-4" strokeWidth={2.5} />
                   </span>
-                </div>
-                <div>
-                  <h3 className="font-semibold leading-snug">{s.t}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#5f6673]">{s.d}</p>
+                </button>
+                <div
+                  id={`solution-step-${s.n}`}
+                  className={`grid transition-all duration-300 ease-out ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-4 pb-4 pl-[4.75rem] text-sm leading-relaxed text-[#5f6673] sm:px-5 sm:pb-5 sm:pl-[5.5rem]">
+                      {s.d}
+                    </p>
+                  </div>
                 </div>
               </div>
-              {i < arr.length - 1 && (
-                <div className="flex justify-center my-1">
-                  <div className="h-5 w-px bg-gradient-to-b from-[#4097ff] to-transparent" />
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 px-5 py-4 text-left sm:mt-10 sm:px-6 sm:py-5 sm:text-center">
           <p className="text-sm font-semibold leading-relaxed text-[#161b25] sm:text-[15px]">
-            Sans changer vos outils actuels, sans formation technique, sans gérer quoi que ce soit
-            au quotidien.
+            Sans changer vos outils actuels, sans apprentissage technique, sans gérer quoi que ce
+            soit au quotidien.
           </p>
         </div>
       </Section>
 
-      <Section id="fonctionnalites" className="section-soft-blue">
+      <Section id="fonctionnalites">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
-          <Eyebrow>Ce que Converto fait concrètement</Eyebrow>
+          <Eyebrow>Ce qui change concrètement</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Un vrai commercial. Pas un script.
+            Trois choses simples : répondre, convaincre, faire avancer.
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Converto a été conçu pour vendre comme un commercial avec 25 ans d'expérience — pas pour
-            répondre à des questions selon des règles prédéfinies. Voici ce qu'il fait dans chaque
-            conversation.
+            Le reste n'est que de la technique. Ce qui compte, c'est que les personnes intéressées
+            ne repartent plus sans prochaine étape.
           </p>
         </div>
 
-        <div className="mt-9 grid gap-3 sm:mt-12 sm:gap-5 md:grid-cols-2">
+        <div className="mt-9 grid gap-3 sm:mt-12 sm:gap-5 lg:grid-cols-3">
           {[
             {
-              icon: BrainCircuit,
+              icon: Zap,
               tone: "blue",
-              t: "Il lit, comprend et s'adapte en temps réel",
-              d: "Converto ne suit pas un arbre de décision. Il comprend le contexte de chaque message, lit le ton du prospect, s'adapte à sa façon de parler et détecte automatiquement les signaux d'achat pour passer en mode closing au bon moment.",
+              t: "Répond instantanément",
+              d: "Chaque nouvelle demande reçoit une réponse en quelques secondes, même le soir, le week-end ou quand votre équipe est occupée.",
             },
             {
-              icon: AudioLines,
+              icon: Target,
               tone: "dark",
-              t: "Il comprend les notes vocales, photos et PDFs",
-              d: "Vos prospects envoient des vocaux ? Des screenshots ? Des documents ? Converto transcrit les notes vocales automatiquement, comprend les images et continue la conversation sans jamais bloquer sur un format inattendu.",
-            },
-            {
-              icon: RefreshCw,
-              tone: "blue",
-              t: "Il relance les prospects silencieux",
-              d: "Un prospect qui ne répond plus n'est pas perdu. Converto détecte les conversations sans réponse et envoie des relances personnalisées et espacées dans le temps — J+1, J+3, J+7 — en reprenant exactement là où la conversation s'était arrêtée.",
-            },
-            {
-              icon: Megaphone,
-              tone: "green",
-              t: "Il réactive votre base de contacts dormante",
-              d: "Vous avez une liste WhatsApp ou Instagram que vous n'avez pas contactée depuis des mois ? Converto envoie des campagnes de réactivation personnalisées, gère toutes les réponses en temps réel et oriente vers votre offre. Une liste dormante peut générer plusieurs ventes dès la première campagne.",
+              t: "Convainc les personnes qui hésitent",
+              d: "Prix, délai, confiance, comparaison : vos meilleurs arguments sont utilisés au bon moment pour aider la personne à avancer.",
             },
             {
               icon: CalendarCheck2,
-              tone: "blue",
-              t: "Il réserve des RDV sans quitter la conversation",
-              d: "Converto réserve des appels directement dans la conversation — sans rediriger le prospect vers un lien externe, sans formulaire, sans friction. Le créneau est confirmé en quelques secondes, dans le canal où la conversation a lieu.",
-            },
-            {
-              icon: MessagesSquare,
-              tone: "dark",
-              t: "Il est actif sur tous vos canaux en même temps",
-              d: "Site web, WhatsApp, Instagram, Messenger, Telegram, SMS — un seul commercial IA actif partout où se trouvent vos prospects. Toutes les conversations arrivent dans un inbox unifié. Vous gardez la main en un clic à tout moment.",
-            },
-            {
-              icon: SearchCheck,
-              tone: "blue",
-              t: "Il cherche l'information en temps réel",
-              d: "Si un prospect pose une question dont la réponse n'est pas dans sa base de connaissance, Converto recherche l'information en temps réel et continue la conversation avec une réponse sourcée. Fini le \"je vais vérifier et revenir vers vous\" qui tue les conversions.",
-            },
-            {
-              icon: TrendingUp,
               tone: "green",
-              t: "Il s'améliore automatiquement à chaque conversation",
-              d: "Le moteur d'optimisation analyse en continu les conversations gagnantes et perdantes. Il identifie les patterns qui mènent à des ventes et améliore les scripts automatiquement. Chaque suggestion est validée avant déploiement. Plus Converto tourne, mieux il convertit.",
+              t: "Fait avancer jusqu'au rendez-vous ou à la vente",
+              d: "La conversation ne s'arrête pas à une réponse : elle guide vers un rendez-vous, un devis, un achat ou une reprise par votre équipe.",
             },
           ].map((c, i) => (
             <div
@@ -569,54 +661,28 @@ function Page() {
           ))}
         </div>
 
-        <div className="mx-auto mt-9 max-w-5xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-5 text-left sm:mt-12 sm:p-6 sm:text-center">
-          <p className="text-sm font-bold text-[#161b25] sm:text-base">
-            Actif sur 6 canaux — là où se trouvent vos prospects
-          </p>
-          <div className="mt-4 flex flex-wrap gap-2 sm:justify-center sm:gap-2.5">
-            {[
-              { label: "Web chat", icon: Globe2 },
-              { label: "WhatsApp", icon: MessageCircle },
-              { label: "Instagram", icon: Instagram },
-              { label: "Messenger", icon: MessagesSquare },
-              { label: "Telegram", icon: Send },
-              { label: "SMS", icon: MessageSquareText },
-            ].map((channel) => (
-              <div
-                key={channel.label}
-                className="inline-flex items-center gap-2 rounded-full border border-[#1948ff]/10 bg-white px-3 py-2 text-sm font-semibold text-[#161b25] shadow-soft"
-              >
-                <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#1948ff]/10 text-[#1948ff]">
-                  <channel.icon className="h-4 w-4" strokeWidth={2.4} />
-                </span>
-                {channel.label}
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="mx-auto mt-8 max-w-3xl text-left sm:mt-10 sm:text-center">
           <h3 className="text-xl font-bold leading-tight text-[#161b25]">
-            Voir Converto en action sur votre offre
+            Voir ce que Converto ferait avec vos demandes
           </h3>
           <p className="mt-2 text-sm font-semibold text-[#5f6673]">
-            Démo gratuite de 30 min — sans engagement
+            Échange de 30 min — sans engagement
           </p>
           <div className="mt-5">
-            <CTA>Réserver une démo gratuite</CTA>
+            <CTA>Voir si c'est rentable pour moi</CTA>
           </div>
         </div>
       </Section>
 
-      <Section id="resultats">
+      <Section id="resultats" className="bg-surface">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>Résultats</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Ce que vous voyez dans votre dashboard chaque mois
+            Ce que vous suivez dans votre dashboard
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Contrairement à un chatbot classique, Converto ne se contente pas de répondre — il
-            convertit. Voici les chiffres mesurés sur nos premiers déploiements.
+            Le dashboard affiche d'abord les indicateurs réellement utiles au suivi quotidien. Selon
+            votre activité, le chiffre d'affaires attribué peut aussi être suivi.
           </p>
         </div>
         <div className="mx-auto mt-9 max-w-5xl overflow-hidden rounded-2xl border border-border bg-white shadow-soft sm:mt-12">
@@ -635,26 +701,32 @@ function Page() {
                 Vue mensuelle
               </div>
             </div>
-            <div className="mx-auto grid max-w-3xl gap-3 md:grid-cols-3 md:gap-4">
+            <div className="mx-auto grid max-w-4xl gap-3 sm:grid-cols-2 md:grid-cols-4 md:gap-4">
               {[
                 {
-                  icon: MessageCircle,
-                  label: "Conversations commerciales initiées",
-                  desc: "Chaque visiteur qui engage avec votre commercial IA",
-                  example: "Ex : 47 conversations engagées en avril",
+                  icon: MessagesSquare,
+                  label: "Personnes ayant interagi",
+                  desc: "Le nombre de visiteurs ou contacts qui ont engagé un échange",
+                  example: "Site, WhatsApp, Instagram ou Messenger",
+                },
+                {
+                  icon: CalendarCheck2,
+                  label: "Rendez-vous générés",
+                  desc: "Les créneaux confirmés directement depuis la conversation",
+                  example: "Appels, visites, consultations ou rendez-vous commerciaux",
                 },
                 {
                   icon: TrendingUp,
-                  label: "Taux de conversion",
-                  desc: "Conversations transformées en appels réservés ou achats directs",
-                  example: "Ex : taux de réservation multiplié par 4 à 6 vs formulaire classique",
+                  label: "Conversion vers RDV",
+                  desc: "La part des échanges qui se transforment en rendez-vous",
+                  example: "Un indicateur simple pour suivre la performance",
+                  highlight: true,
                 },
                 {
-                  icon: CircleDollarSign,
-                  label: "CA généré ce mois",
-                  desc: "Le chiffre d'affaires directement attribuable à votre commercial IA",
-                  example: "Exemple illustratif — votre dashboard affichera vos propres chiffres",
-                  highlight: true,
+                  icon: MessagesSquare,
+                  label: "Messages envoyés",
+                  desc: "Le volume de réponses envoyées automatiquement sur vos canaux",
+                  example: "Avec l'historique complet des échanges",
                 },
               ].map((item) => (
                 <div
@@ -682,84 +754,127 @@ function Page() {
             </div>
             <div className="mt-6 rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-4 sm:mt-8 sm:p-6">
               <h4 className="font-bold text-[#161b25]">
-                Vous avez déjà fait le plus dur : attirer des visiteurs.
+                Une vue simple pour piloter les demandes.
               </h4>
               <p className="mt-2 text-sm text-[#5f6673] leading-relaxed">
-                Converto s'assure qu'ils ne repartent pas sans avoir eu une vraie conversation
-                commerciale — et vous voyez chaque euro généré en temps réel.
+                Vous voyez combien de personnes ont interagi, combien de rendez-vous ont été pris,
+                quel est le taux de conversion et combien de messages ont été envoyés. Le CA généré
+                peut être ajouté lorsque le parcours permet de l'attribuer correctement.
               </p>
             </div>
           </div>
         </div>
       </Section>
 
-      <Section id="chiffres" className="bg-surface">
+      <Section id="chiffres">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
-          <Eyebrow>Les chiffres parlent</Eyebrow>
+          <Eyebrow>Rentabilité</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Des résultats mesurés. Pas des promesses.
+            Combien de clients supplémentaires devez-vous signer ?
           </h2>
         </div>
 
-        <div className="mt-9 grid gap-4 sm:mt-12 md:grid-cols-2 md:gap-5">
-          {[
-            {
-              icon: ShoppingCart,
-              title: "40% des paniers abandonnés récupérés — contre 9% en email classique",
-              stat: "40%",
-              desc: "Sur nos premiers déploiements e-commerce, Converto récupère 40% des paniers abandonnés via une conversation directe sur WhatsApp ou Instagram. L'email de relance classique tourne à 9%. La différence : une vraie conversation vs un email ignoré.",
-            },
-            {
-              icon: Zap,
-              title: "Temps de réponse réduit de 24h à 15 secondes",
-              stat: "15s",
-              desc: "Vos prospects obtiennent une réponse en 15 secondes — avant même d'avoir fermé l'onglet. Fini les leads qui refroidissent pendant la nuit ou le week-end.",
-            },
-            {
-              icon: CalendarCheck2,
-              title: "Taux de réservation d'appels multiplié par 4 à 6",
-              stat: "×4 à ×6",
-              desc: "Les formulaires de contact convertissent peu — le prospect doit faire l'effort d'aller sur une page externe et remplir des champs. Converto transforme ce tunnel passif en discussion active sur WhatsApp ou Instagram. L'effort est quasi nul, le taux de réservation explose mécaniquement.",
-            },
-            {
-              icon: TrendingDown,
-              title: "97% de vos visiteurs repartent sans acheter ni vous contacter",
-              stat: "97%",
-              desc: "Même avec une page de vente optimisée, la quasi-totalité de votre trafic s'évapore en silence. Ces prospects ont vu votre offre. Ils hésitaient. Personne n'était là pour les convaincre.",
-            },
-          ].map((c, i) => (
-            <div
-              key={i}
-              className="flex flex-col rounded-2xl border border-border bg-white p-5 shadow-soft sm:p-7"
-            >
-              <div className="flex items-center gap-3">
-                <IconBadge icon={c.icon} tone="blue" />
-                <div
-                  className="text-4xl font-bold text-gradient sm:text-5xl"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  {c.stat}
-                </div>
-              </div>
-              <h3 className="mt-4 font-semibold leading-snug text-[#161b25]">{c.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-[#5f6673]">{c.desc}</p>
+        <div className="mx-auto mt-9 grid max-w-5xl gap-5 rounded-2xl border border-border bg-white p-5 shadow-soft sm:mt-12 sm:p-7 lg:grid-cols-[0.95fr_1fr] lg:gap-8">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#1948ff]/10 px-3 py-1.5 text-xs font-bold uppercase text-[#1948ff]">
+              <Calculator className="h-4 w-4" strokeWidth={2.5} />
+              Calcul de rentabilité
             </div>
-          ))}
-        </div>
-        <p className="mt-4 text-center text-xs text-[#8a90a0]">
-          Sources : Résultats mesurés — déploiements Converto 2025 / Benchmarks taux de conversion
-          secteur formation en ligne
-        </p>
+            <h3 className="mt-4 text-2xl font-bold leading-tight text-[#161b25]">
+              Combien de clients faut-il récupérer pour rentabiliser Converto ?
+            </h3>
 
-        <div className="mx-auto mt-8 max-w-3xl rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-5 text-left sm:mt-12 sm:text-center">
-          <p className="text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Ces chiffres ne sont pas des projections. Ce sont des résultats mesurés sur nos premiers
-            déploiements. Votre dashboard vous montrera les vôtres.
-          </p>
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
+              <label className="flex min-h-[104px] flex-col justify-between rounded-xl border border-border bg-surface p-3 text-left">
+                <span className="block min-h-8 text-xs font-semibold leading-snug text-[#5f6673]">
+                  Panier moyen par client
+                </span>
+                <span className="mt-2 flex items-center gap-2">
+                  <input
+                    type="number"
+                    min="0"
+                    value={averageClientValue}
+                    onChange={(event) => setAverageClientValue(Number(event.target.value) || 0)}
+                    className="h-10 min-w-0 flex-1 rounded-lg border border-border bg-white px-3 text-base font-bold text-[#161b25] outline-none transition-colors focus:border-[#1948ff]"
+                  />
+                  <span className="text-sm font-bold text-[#5f6673]">€</span>
+                </span>
+              </label>
+
+              <label className="flex min-h-[104px] flex-col justify-between rounded-xl border border-border bg-surface p-3 text-left">
+                <span className="block min-h-8 text-xs font-semibold leading-snug text-[#5f6673]">
+                  Marge moyenne
+                </span>
+                <span className="mt-2 flex items-center gap-2">
+                  <input
+                    type="number"
+                    min="0"
+                    max="100"
+                    value={marginRate}
+                    onChange={(event) => setMarginRate(Number(event.target.value) || 0)}
+                    className="h-10 min-w-0 flex-1 rounded-lg border border-border bg-white px-3 text-base font-bold text-[#161b25] outline-none transition-colors focus:border-[#1948ff]"
+                  />
+                  <span className="text-sm font-bold text-[#5f6673]">%</span>
+                </span>
+              </label>
+
+              <label className="flex min-h-[104px] flex-col justify-between rounded-xl border border-border bg-surface p-3 text-left">
+                <span className="block min-h-8 text-xs font-semibold leading-snug text-[#5f6673]">
+                  Abonnement Converto
+                </span>
+                <select
+                  value={selectedRoiPlan}
+                  onChange={(event) =>
+                    setSelectedRoiPlan(event.target.value as (typeof ROI_PLANS)[number]["name"])
+                  }
+                  className="mt-2 h-10 w-full min-w-0 rounded-lg border border-border bg-white px-3 pr-8 text-sm font-bold text-[#161b25] outline-none transition-colors focus:border-[#1948ff] lg:text-base"
+                >
+                  {ROI_PLANS.map((plan) => (
+                    <option key={plan.name} value={plan.name}>
+                      {plan.name} ({formatEuro(plan.price)} €)
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+
+            <p className="mt-5 rounded-2xl border border-[#1948ff]/10 bg-[#1948ff]/5 p-4 text-sm leading-relaxed text-[#5f6673]">
+              Ce calcul est volontairement prudent. Il ne prend en compte que la marge générée par
+              les nouveaux clients signés grâce à Converto. Il ne tient pas compte du temps gagné
+              par vos équipes, des relances automatiques ni des opportunités récupérées qui seraient
+              autrement perdues.
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-center rounded-2xl border border-[#16a34a]/25 bg-[#16a34a]/10 p-5 text-center sm:p-8">
+            <p className="text-sm font-bold uppercase text-[#15803d]">
+              Il suffit que Converto vous permette de signer
+            </p>
+            <div
+              className="mt-4 text-6xl font-bold text-[#15803d] sm:text-7xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {clientsNeeded.toLocaleString("fr-FR", {
+                maximumFractionDigits: 2,
+              })}
+            </div>
+            <p className="mt-3 text-lg font-bold leading-relaxed text-[#161b25]">
+              client supplémentaire par mois
+            </p>
+            <p className="mx-auto mt-5 max-w-md text-sm leading-relaxed text-[#5f6673]">
+              Avec vos hypothèses, un nouveau client vous rapporte environ{" "}
+              <strong className="text-[#161b25]">{formatEuro(Math.round(averageProfit))} €</strong>{" "}
+              de marge. Il suffit donc que Converto vous permette de signer{" "}
+              <strong className="text-[#161b25]">
+                {clientsNeeded.toLocaleString("fr-FR", { maximumFractionDigits: 2 })}
+              </strong>{" "}
+              client supplémentaire par mois pour rentabiliser son coût.
+            </p>
+          </div>
         </div>
       </Section>
 
-      <Section id="pour-qui">
+      <Section id="pour-qui" className="bg-surface">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl">
             <Eyebrow>Pour qui</Eyebrow>
@@ -767,22 +882,25 @@ function Page() {
               Converto est fait pour vous si vous vendez des offres à forte valeur
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-              Votre commercial IA crée le plus de valeur quand il y a de vraies objections à lever
-              et un vrai CA à générer par conversation.
+              La solution crée le plus de valeur quand il y a de vraies objections à lever et un
+              vrai CA à générer par conversation.
             </p>
           </div>
-          <CTA>Réserver une démo gratuite</CTA>
+          <CTA>Voir si c'est rentable pour moi</CTA>
         </div>
 
-        <div className="mt-9 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-[1.05fr_1fr_0.9fr] lg:gap-5">
-          <div className="rounded-2xl border border-[#16a34a]/20 bg-white p-5 shadow-soft sm:p-6">
-            <h3 className="text-lg font-bold">Converto est fait pour vous si :</h3>
+        <div className="mt-9 grid items-stretch gap-4 sm:mt-12 lg:grid-cols-2 lg:gap-5">
+          <div className="rounded-2xl border border-[#16a34a]/20 bg-white p-5 shadow-soft sm:p-7">
+            <div className="flex items-center gap-3">
+              <IconBadge icon={CheckCircle2} tone="green" />
+              <h3 className="text-xl font-bold">Converto est fait pour vous</h3>
+            </div>
             <ul className="mt-4 space-y-3 sm:mt-5">
               {[
-                "vous vendez des formations ou accompagnements à partir de 1 000 €",
-                "vous avez déjà du trafic sur votre site ou vos réseaux sociaux",
-                "vous perdez du temps à répondre aux mêmes questions en DM",
-                "vous voulez mesurer précisément ce que votre outil commercial vous rapporte chaque mois",
+                "vous vendez des produits ou services à partir de 500 €",
+                "vous avez déjà du trafic sur votre site, vos réseaux sociaux ou des demandes régulières",
+                "vous perdez du temps à répondre aux mêmes questions par message ou téléphone",
+                "vous voulez mesurer précisément les rendez-vous, devis et ventes récupérés chaque mois",
               ].map((t) => (
                 <li key={t} className="flex items-start gap-3 text-[15px] text-[#161b25]">
                   <Check />
@@ -792,8 +910,11 @@ function Page() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-red-100 bg-white p-5 shadow-soft sm:p-6">
-            <h3 className="text-lg font-bold">Ce n'est probablement pas adapté si :</h3>
+          <div className="rounded-2xl border border-red-100 bg-white p-5 shadow-soft sm:p-7">
+            <div className="flex items-center gap-3">
+              <IconBadge icon={XCircle} tone="red" />
+              <h3 className="text-xl font-bold">Ce n'est probablement pas adapté</h3>
+            </div>
             <ul className="mt-4 space-y-3 sm:mt-5">
               {[
                 "vous n'avez pas encore de trafic ni d'audience",
@@ -808,21 +929,28 @@ function Page() {
             </ul>
           </div>
 
-          <div className="rounded-2xl border border-border bg-white p-5 shadow-soft sm:p-6">
-            <h3 className="text-lg font-bold">Profils concernés</h3>
-            <div className="mt-4 flex flex-wrap gap-2 sm:mt-5 sm:gap-2.5">
+          <div className="rounded-2xl border border-border bg-white p-5 shadow-soft sm:p-7 lg:col-span-2">
+            <h3 className="text-xl font-bold">Profils concernés</h3>
+            <div className="mt-4 grid gap-2 sm:mt-5 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                "Coach business",
-                "Coach de vie",
-                "Formateur en ligne",
-                "Thérapeute / praticien",
-                "Consultant",
-                "Créateur de contenu avec offre premium",
-                "Infopreneur",
-              ].map((t) => (
-                <div key={t} className="flex items-center gap-2 rounded-full bg-surface px-3 py-2">
-                  <Check />
-                  <span className="text-sm font-medium text-[#161b25]">{t}</span>
+                ["Agences immobilières", "Visites, estimations, demandes de biens"],
+                [
+                  "Cliniques médicales et esthétiques",
+                  "Consultations, interventions, objections prix",
+                ],
+                ["Services premium à domicile", "Devis, urgence, zone d'intervention"],
+                ["Coach / formateur en ligne", "Appels découverte, objections, inscription"],
+                ["Consultant / cabinet de conseil", "Qualification, contexte, rendez-vous"],
+                ["Architecte / décorateur", "Projet, budget, délai, prise de contact"],
+              ].map(([title, detail]) => (
+                <div key={title} className="rounded-xl border border-border bg-surface p-4">
+                  <div className="flex items-start gap-3">
+                    <Check />
+                    <div>
+                      <p className="text-sm font-bold text-[#161b25]">{title}</p>
+                      <p className="mt-1 text-xs leading-relaxed text-[#5f6673]">{detail}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -830,15 +958,15 @@ function Page() {
         </div>
       </Section>
 
-      <Section id="offres" className="bg-surface">
+      <Section id="offres">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>Tarifs</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
-            Trois formules selon vos canaux et vos ambitions
+            Trois formules selon votre volume et vos canaux
           </h2>
           <p className="mt-4 text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Chaque formule inclut un setup complet et un abonnement mensuel. Vous ne payez que si
-            votre commercial IA est en place et actif.
+            Le setup couvre l'audit, la configuration, les scénarios de vente et l'intégration
+            technique. L'abonnement couvre l'exploitation, le suivi et l'amélioration continue.
           </p>
           <div className="mt-7 grid w-full grid-cols-2 rounded-full border border-border bg-white p-1 shadow-soft sm:mx-auto sm:inline-grid sm:w-auto">
             {[
@@ -910,28 +1038,28 @@ function Page() {
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-[#16a34a]/25 bg-[#16a34a]/10 px-5 py-4 text-left shadow-[0_18px_40px_rgba(22,163,74,0.12)] sm:mt-8 sm:px-6 sm:py-5 sm:text-center">
-          <h3 className="inline-flex items-center gap-2 text-lg font-bold text-[#15803d] sm:justify-center sm:text-xl">
+        <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-[#1948ff]/15 bg-[#1948ff]/5 px-5 py-4 text-left shadow-soft sm:mt-8 sm:px-6 sm:py-5 sm:text-center">
+          <h3 className="inline-flex items-center gap-2 text-lg font-bold text-[#1948ff] sm:justify-center sm:text-xl">
             <ShieldCheck className="h-5 w-5" strokeWidth={2.4} />
-            Garantie résultat premier mois
+            Diagnostic avant déploiement
           </h3>
           <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
-            Si votre commercial IA ne génère aucune conversation qualifiée lors du premier mois, le
-            mois suivant est offert.
+            Si nous estimons que Converto ne sera pas rentable pour votre activité, nous vous le
+            dirons avant tout déploiement.
           </p>
         </div>
         <div className="mx-auto mt-8 max-w-3xl text-left sm:mt-10 sm:text-center">
           <p className="text-base leading-relaxed text-[#5f6673] sm:text-lg">
-            Vous ne savez pas quelle formule choisir ? En démo, on regarde ensemble votre situation,
-            vos canaux et vos objectifs pour vous orienter vers la formule la plus adaptée.
+            Vous ne savez pas quelle formule choisir ? On regarde ensemble votre situation, vos
+            canaux et vos objectifs pour vous orienter vers la formule la plus adaptée.
           </p>
           <div className="mt-6">
-            <CTA>Réserver une démo gratuite</CTA>
+            <CTA>Voir si c'est rentable pour moi</CTA>
           </div>
         </div>
       </Section>
 
-      <Section id="faq">
+      <Section id="faq" className="bg-surface">
         <div className="mx-auto max-w-3xl text-left sm:text-center">
           <Eyebrow>FAQ</Eyebrow>
           <h2 className="mt-5 text-[1.8rem] font-bold leading-tight sm:text-4xl">
@@ -943,7 +1071,7 @@ function Page() {
         </div>
       </Section>
 
-      <Section className="bg-surface">
+      <Section>
         <div className="mx-auto flex max-w-4xl flex-col gap-5 rounded-2xl border border-border bg-white p-5 shadow-soft sm:gap-8 sm:p-8 md:flex-row md:items-center">
           <div className="mx-auto h-24 w-24 shrink-0 overflow-hidden rounded-3xl border border-[#1948ff]/15 bg-surface shadow-card sm:h-28 sm:w-28 md:mx-0">
             <img
@@ -953,14 +1081,14 @@ function Page() {
             />
           </div>
           <div className="text-left md:text-left">
-            <Eyebrow>Qui configure votre commercial IA ?</Eyebrow>
+            <Eyebrow>Qui configure votre parcours de vente ?</Eyebrow>
             <h2 className="mt-4 text-2xl font-bold leading-tight text-[#161b25]">
               Geoffroy de Miol-Flavard, fondateur de Converto
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-[#5f6673] sm:text-base">
-              Chaque commercial IA est configuré avec une logique de vente concrète : compréhension
-              de votre offre, objections à lever, ton de marque, scénarios de conversion et suivi du
-              CA généré.
+              Chaque parcours est configuré avec une logique de vente concrète : compréhension de
+              votre offre, objections à lever, ton de marque, scénarios de conversion et suivi du CA
+              généré.
             </p>
           </div>
         </div>
@@ -973,11 +1101,11 @@ function Page() {
             style={{ background: "radial-gradient(circle at 30% 20%, white, transparent 50%)" }}
           />
           <h2 className="relative mx-auto max-w-3xl text-[2rem] font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-            Votre commercial IA pourrait être actif d'ici une semaine.
+            Vos demandes pourraient être mieux traitées d'ici une semaine.
           </h2>
           <p className="relative mx-auto mt-4 max-w-2xl text-base leading-relaxed text-white/90 sm:mt-5 sm:text-lg">
-            Réservez une démo gratuite de 30 minutes. On regarde ensemble votre offre, vos canaux,
-            et on vous dit honnêtement si Converto peut vous apporter de la valeur.
+            En 30 minutes, on regarde votre offre, vos canaux et votre trafic pour estimer où vous
+            pourriez récupérer des rendez-vous, devis ou ventes.
           </p>
           <div className="relative mt-7 flex justify-center sm:mt-8">
             <a
@@ -987,7 +1115,7 @@ function Page() {
               className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-white px-7 text-[15px] font-semibold text-[#1948ff] shadow-card transition-all hover:-translate-y-0.5 sm:w-auto"
             >
               <Sparkles className="h-4 w-4" strokeWidth={2.4} />
-              Réserver une démo gratuite
+              Voir si c'est rentable pour moi
               <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
             </a>
           </div>

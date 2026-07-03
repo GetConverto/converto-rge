@@ -26,34 +26,27 @@ export function WhatsappMockup() {
               <MessageCircle className="h-5 w-5" strokeWidth={2.4} />
             </div>
             <div className="flex-1">
-              <div className="text-sm font-semibold">Converto · Formation Pro</div>
+              <div className="text-sm font-semibold">Converto</div>
               <div className="text-[10px] text-white/70">en ligne</div>
             </div>
             <span className="h-2.5 w-2.5 rounded-full bg-[#22c55e] ring-4 ring-[#22c55e]/15" />
           </div>
           <div className="p-3 space-y-1.5">
+            <Bubble side="out">Bonjour, j’aimerais avoir quelques renseignements.</Bubble>
             <Bubble side="in">
-              Bonjour 👋 vous hésitez à rejoindre la formation ? Je peux lever vos doutes
-              maintenant.
+              Bonjour 👋 Avec plaisir. Pouvez-vous me dire quel est votre projet ?
             </Bubble>
-            <Bubble side="out">Oui, j'hésite surtout sur le prix...</Bubble>
+            <Bubble side="out">J’hésite encore, je trouve les tarifs un peu élevés.</Bubble>
             <Bubble side="in">
-              Je comprends. Nos participants récupèrent en moyenne leur investissement en 6
-              semaines. Qu'est-ce qui vous a amené ici ?
+              Je comprends. Beaucoup de nos clients avaient la même question au départ. Est-ce que
+              c’est surtout le budget qui vous freine ou vous voulez être sûr que ce soit le bon
+              choix ?
             </Bubble>
-            <Bubble side="out">J'ai vu une pub Instagram</Bubble>
+            <Bubble side="out">Je veux surtout être sûr de faire le bon choix.</Bubble>
             <Bubble side="in">
-              Parfait. Je vous propose un appel découverte de 20 min demain à 11h. Ça vous convient
-              ?
+              Dans ce cas, le plus simple est qu’un conseiller regarde votre projet avec vous. J’ai
+              une disponibilité demain à 11h ou jeudi à 17h.
             </Bubble>
-            <Bubble side="out">Oui c'est parfait 👍</Bubble>
-            <div className="mx-auto max-w-[80%] bg-white rounded-xl p-2.5 shadow-soft border border-black/5">
-              <div className="flex items-center gap-2 text-[11px] font-semibold text-[#1948ff]">
-                <CalendarCheck2 className="h-4 w-4" strokeWidth={2.4} />
-                Appel confirmé
-              </div>
-              <div className="text-xs text-[#161b25] mt-1 font-medium">Demain · 11:00 — Zoom</div>
-            </div>
           </div>
         </div>
       </div>

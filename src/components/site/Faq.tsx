@@ -3,40 +3,44 @@ import { Plus } from "lucide-react";
 
 const items = [
   {
-    q: "Est-ce que Converto a fait ses preuves ? Vous avez des résultats concrets ?",
-    a: "Oui. Sur nos premiers déploiements, nous avons mesuré : 40% de récupération sur les paniers abandonnés (contre 9% en email classique), un temps de réponse réduit de 24h à 15 secondes, et un taux de réservation d'appels multiplié par 4 à 6 par rapport aux formulaires de contact classiques. Ces chiffres sont visibles dans le dashboard de chaque client dès le premier mois.",
+    q: "Comment savoir si Converto sera rentable pour moi ?",
+    a: "L'échange sert justement à estimer ce point. On regarde votre trafic, vos canaux, votre panier moyen, votre taux de conversion actuel et la valeur d'un rendez-vous obtenu. Si le potentiel n'est pas suffisant, on vous le dit clairement.",
   },
   {
-    q: "En quoi c'est différent d'un chatbot ?",
-    a: "Un chatbot répond à des questions selon des règles prédéfinies. Votre commercial IA Converto comprend le contexte de la conversation, gère les objections commerciales en temps réel, s'adapte à chaque prospect et oriente activement vers un achat ou un appel. L'objectif n'est pas de répondre — c'est de vendre.",
+    q: "Pourquoi ne pas simplement utiliser ChatGPT ?",
+    a: "ChatGPT est un outil généraliste. Converto est configuré pour votre offre, vos objections, vos canaux, votre agenda, vos relances et votre dashboard. La valeur n'est pas seulement le modèle IA : c'est le système commercial complet autour.",
   },
   {
-    q: "Comment votre commercial IA connaît-il mon offre ?",
-    a: "Lors du setup, on analyse ensemble votre page de vente, vos emails, vos arguments commerciaux et les objections fréquentes de vos clients. On programme votre commercial IA avec tout ce contenu. Il connaît votre offre dans le détail — tarifs, bénéfices, différenciateurs, garanties.",
+    q: "En quoi c'est différent d'un chatbot classique ?",
+    a: "Un chatbot classique sert surtout à orienter ou répondre à des demandes simples. Converto est pensé pour engager, qualifier, traiter les objections et pousser vers une action commerciale : rendez-vous, devis, achat ou relance.",
   },
   {
-    q: "Est-ce que ça parle vraiment comme un humain ?",
-    a: "Il se présente comme l'assistant de votre marque — il n'usurpe pas une identité humaine. Mais les conversations sont fluides, naturelles et adaptées à votre ton. Vos prospects ne se sentent pas face à une réponse générique.",
+    q: "Est-ce que Converto remplace mon équipe commerciale ?",
+    a: "Non. Converto intervient surtout avant votre équipe : il engage rapidement les personnes qui vous contactent, récupère les informations utiles, traite les premières objections et réserve un créneau. Votre équipe reprend ensuite avec un contexte clair et un contact déjà rassuré.",
   },
   {
-    q: "Comment je mesure le retour sur investissement ?",
-    a: "C'est le cœur de Converto : chaque vente ou appel généré par votre commercial IA est tracé et visible dans votre dashboard. Vous savez exactement combien il vous rapporte chaque mois. Pas de flou, pas d'approximation.",
+    q: "Qu'est-ce que je dois fournir pour le setup ?",
+    a: "Vos pages de vente, vos offres, vos tarifs, vos questions fréquentes, vos objections récurrentes, vos canaux et vos disponibilités. On transforme ces éléments en scénarios de vente et en parcours conversationnels.",
   },
   {
     q: "Faut-il changer mes outils actuels ?",
-    a: "Non. Votre commercial IA se déploie par-dessus votre site existant et vos réseaux sociaux. Vous ne changez rien à votre stack actuelle.",
+    a: "Non. Converto se déploie par-dessus votre site et vos canaux existants. Vous pouvez garder votre CRM, votre agenda, vos pages actuelles et votre façon de travailler.",
   },
   {
     q: "Combien de temps avant d'être opérationnel ?",
-    a: "En général moins d'une semaine après le kick-off. On gère l'intégration technique de notre côté. Vous n'avez rien à configurer.",
+    a: "En général moins d'une semaine après le kick-off, selon la complexité de vos canaux et des accès nécessaires. On gère la partie technique et on vous sollicite seulement pour valider les éléments importants.",
   },
   {
-    q: "Que se passe-t-il si j'ai plusieurs offres différentes ?",
-    a: "Votre commercial IA peut présenter et vendre plusieurs formations ou niveaux d'accompagnement. Il oriente chaque prospect vers l'offre la plus adaptée à sa situation.",
+    q: "Que se passe-t-il si ça ne fonctionne pas ?",
+    a: "On analyse les échanges, le trafic, les objections et les points de friction pour corriger ce qui bloque. Et si aucune demande exploitable n'est générée sur un volume de trafic suffisant le premier mois, le mois suivant est offert.",
+  },
+  {
+    q: "Est-ce adapté si j'ai peu de trafic ?",
+    a: "Pas toujours. Converto crée surtout de la valeur quand vous avez déjà des visiteurs, des messages reçus ou une base de contacts à réactiver. Si le volume est trop faible, il vaut souvent mieux travailler l'acquisition avant.",
   },
   {
     q: "Puis-je arrêter à tout moment ?",
-    a: "Oui. Vous pouvez arrêter l'abonnement à tout moment avec un préavis de 30 jours. Votre commercial IA est désactivé à l'issue de cette période.",
+    a: "Oui. Vous pouvez arrêter l'abonnement avec un préavis de 30 jours. Converto est désactivé à l'issue de cette période.",
   },
 ];
 

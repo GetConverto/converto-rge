@@ -5,10 +5,12 @@ const CAL_URL = "https://calendly.com/gdmf-ai/20mn";
 const LOGO_URL = "/converto-logo.svg?v=2";
 
 const links = [
-  { href: "#difference", label: "Pourquoi Converto" },
-  { href: "#fonctionnement", label: "Comment ça marche" },
-  { href: "#resultats", label: "Résultats" },
-  { href: "#pour-qui", label: "Tarifs" },
+  { href: "#probleme", label: "Le problème" },
+  { href: "#comparatif", label: "Chatbot vs Converto" },
+  { href: "#fonctionnement", label: "La solution" },
+  { href: "#chiffres", label: "Rentabilité" },
+  { href: "#pour-qui", label: "Pour qui ?" },
+  { href: "#offres", label: "Tarifs" },
   { href: "#faq", label: "FAQ" },
 ];
 
@@ -36,7 +38,7 @@ export function Nav() {
           <img src={LOGO_URL} alt="Converto" className="h-8 w-auto" />
         </a>
 
-        <nav className="hidden lg:flex items-center gap-5">
+        <nav className="hidden lg:flex items-center gap-4 xl:gap-5">
           {links.map((l) => (
             <a
               key={l.href}
@@ -54,7 +56,7 @@ export function Nav() {
           rel="noopener noreferrer"
           className="hidden lg:inline-flex items-center justify-center gap-2 h-10 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary shadow-soft hover:shadow-glow hover:-translate-y-0.5 transition-all"
         >
-          Réserver une démo gratuite
+          Voir si c'est rentable
           <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
         </a>
 
@@ -85,7 +87,7 @@ export function Nav() {
             rel="noopener noreferrer"
             className="inline-flex w-full justify-center items-center gap-2 h-11 px-5 rounded-full text-sm font-semibold text-white bg-gradient-primary"
           >
-            Réserver une démo gratuite
+            Voir si c'est rentable pour moi
             <ArrowRight className="h-4 w-4" strokeWidth={2.4} />
           </a>
         </div>

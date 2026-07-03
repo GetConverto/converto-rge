@@ -25,11 +25,11 @@ function ContactPage() {
 
         <section className="mt-14 rounded-2xl border border-border bg-surface p-8 sm:p-10">
           <p className="text-sm font-semibold text-[#1948ff]">Contact</p>
-          <h1 className="mt-3 text-4xl font-bold">Parlons de votre commercial IA</h1>
+          <h1 className="mt-3 text-4xl font-bold">Voyons ce que vous pourriez récupérer</h1>
           <p className="mt-5 text-lg leading-relaxed text-[#5f6673]">
-            Le plus simple est de réserver une démonstration de 30 minutes. Nous regarderons votre
-            offre, vos canaux, vos objections commerciales et la manière dont Converto peut générer
-            des conversations, appels et ventes mesurables.
+            Le plus simple est de réserver un échange de 30 minutes. Nous regarderons votre offre,
+            vos canaux, vos objections commerciales et les rendez-vous, devis ou ventes que vous
+            pourriez récupérer.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
@@ -38,7 +38,7 @@ function ContactPage() {
               rel="noopener noreferrer"
               className="inline-flex h-12 items-center justify-center rounded-full bg-gradient-primary px-7 text-[15px] font-semibold text-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-glow"
             >
-              Réserver une démo gratuite →
+              Voir si c'est rentable pour moi →
             </a>
             <a
               href="/"
@@ -60,8 +60,8 @@ function ContactPage() {
           <div className="rounded-2xl border border-border p-6">
             <h2 className="text-lg font-bold">Pour qui ?</h2>
             <p className="mt-3 text-sm leading-relaxed text-[#5f6673]">
-              Coachs, formateurs, consultants et infopreneurs qui vendent des formations ou
-              accompagnements à forte valeur.
+              Entreprises à ticket élevé avec des demandes commerciales régulières : immobilier,
+              médical/esthétique premium, services premium, conseil ou formation.
             </p>
           </div>
           <div className="rounded-2xl border border-border p-6">

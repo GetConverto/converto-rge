@@ -1038,14 +1038,15 @@ function Page() {
             </div>
           ))}
         </div>
-        <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-[#1948ff]/15 bg-[#1948ff]/5 px-5 py-4 text-left shadow-soft sm:mt-8 sm:px-6 sm:py-5 sm:text-center">
-          <h3 className="inline-flex items-center gap-2 text-lg font-bold text-[#1948ff] sm:justify-center sm:text-xl">
+        <div className="mx-auto mt-7 max-w-3xl rounded-2xl border border-[#16a34a]/25 bg-[#16a34a]/10 px-5 py-4 text-left shadow-[0_18px_40px_rgba(22,163,74,0.12)] sm:mt-8 sm:px-6 sm:py-5 sm:text-center">
+          <h3 className="inline-flex items-center gap-2 text-lg font-bold text-[#15803d] sm:justify-center sm:text-xl">
             <ShieldCheck className="h-5 w-5" strokeWidth={2.4} />
-            Diagnostic avant déploiement
+            Garantie 30 jours satisfait ou remboursé
           </h3>
           <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
-            Si nous estimons que Converto ne sera pas rentable pour votre activité, nous vous le
-            dirons avant tout déploiement.
+            Commencez gratuitement pendant 30 jours pour voir ce que Converto vous apporte
+            réellement. Si vous n'êtes pas convaincu, nous désinstallons la solution et on s'arrête
+            là. Si vous continuez, vous commencez à payer à partir du 2e mois.
           </p>
         </div>
         <div className="mx-auto mt-8 max-w-3xl text-left sm:mt-10 sm:text-center">

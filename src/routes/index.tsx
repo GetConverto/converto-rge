@@ -323,8 +323,9 @@ function Page() {
               Pour les entreprises qui veulent transformer plus de visiteurs en clients.
             </Eyebrow>
             <h1 className="mt-5 text-[2.35rem] font-bold leading-[1.05] sm:text-5xl lg:text-[3.35rem]">
-              Vos <span className="text-gradient">futurs clients</span> ne devraient jamais{" "}
-              <span className="text-gradient">repartir sans réponse</span>.
+              Ne perdez plus <span className="text-gradient">aucun prospect</span> : transformez{" "}
+              <span className="text-gradient">chaque visite</span> en{" "}
+              <span className="text-gradient">rendez-vous qualifié</span>.
             </h1>
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#5f6673] sm:text-lg">
               Chaque semaine, des personnes sont prêtes à vous contacter, demandent un devis ou

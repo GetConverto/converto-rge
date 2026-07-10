@@ -1047,7 +1047,7 @@ function Page() {
           <p className="mt-2 text-sm font-semibold leading-relaxed text-[#161b25]">
             Commencez gratuitement pendant 30 jours pour voir ce que Converto vous apporte
             réellement. Si vous n'êtes pas convaincu, nous désinstallons la solution et on s'arrête
-            là. Si vous continuez, vous commencez à payer à partir du 2e mois.
+            là.
           </p>
         </div>
         <div className="mx-auto mt-8 max-w-3xl text-left sm:mt-10 sm:text-center">
